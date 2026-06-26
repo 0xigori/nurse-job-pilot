@@ -17,7 +17,7 @@ export function Hero() {
 
       <div className="max-w-6xl mx-auto px-6 relative">
         {/* Headline */}
-        <div className="text-center max-w-4xl mx-auto mt-24">
+        <div className="text-center max-w-4xl mx-auto mt-12 md:mt-24">
           <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-foreground leading-[1.1] text-balance mb-6">
             Your NHS job application,{" "}
             <span className="text-primary">done in minutes.</span>
