@@ -30,7 +30,7 @@ export function CTA() {
             </Field>
           </div>
           <p className="mt-5 text-xs text-primary-foreground/50">
-            Chrome extension · UK GDPR compliant · Cancel any time
+            Browser extension · UK GDPR compliant · Cancel any time
           </p>
         </div>
       </div>
@@ -51,7 +51,7 @@ export function Footer() {
               <img src={theme === "dark" ? "/logo-dark.png" : "/logo-light.png"} alt="NurseJobPilot Logo" className="h-12" />
             </div>
             <p className="text-xs text-background/50 leading-relaxed max-w-48">
-              Purpose-built for UK nursing job applications. From profile to submitted form.
+              The Browser extension built for UK nursing job applications.
             </p>
           </div>
 
@@ -63,7 +63,6 @@ export function Footer() {
                 { label: "How it works", href: "#how-it-works" },
                 { label: "Features", href: "#features" },
                 { label: "Pricing", href: "#pricing" },
-                { label: "FAQ", href: "#faq" },
               ].map((link) => (
                 <li key={link.label}>
                   <a href={link.href} className="text-sm text-background/60 hover:text-background transition-colors">
@@ -79,10 +78,9 @@ export function Footer() {
             <p className="text-xs font-semibold uppercase tracking-widest text-background/40 mb-4">Support</p>
             <ul className="space-y-2.5">
               {[
-                { label: "Getting started", href: "#" },
-                { label: "Profile setup guide", href: "#" },
-                { label: "Supported job sites", href: "#" },
-                { label: "Contact us", href: "#" },
+                { label: "FAQ", href: "#faq" },
+                { label: "Supported job sites", href: "#job-sites" },
+                { label: "Contact us", href: "mailto:hello@nursejobpilot.com" },
               ].map((link) => (
                 <li key={link.label}>
                   <a href={link.href} className="text-sm text-background/60 hover:text-background transition-colors">
@@ -115,7 +113,7 @@ export function Footer() {
 
         <div className="border-t border-background/10 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-xs text-background/40">
-            &copy; {new Date().getFullYear()} NurseJobPilot. All rights reserved. Chrome extension for UK nursing applications.
+            &copy; {new Date().getFullYear()} NurseJobPilot. All rights reserved. Browser extension for UK nursing applications.
           </p>
           <div className="flex items-center gap-1 text-xs text-background/40">
             <span className="w-1.5 h-1.5 rounded-full bg-green-400" />
