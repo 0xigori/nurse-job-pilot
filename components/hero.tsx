@@ -12,20 +12,11 @@ export function Hero() {
       />
 
       <div className="max-w-6xl mx-auto px-6 relative">
-        {/* Badge */}
-        <div className="flex justify-center mb-8">
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-teal-subtle border border-accent/20 rounded-full text-xs font-medium text-accent">
-            <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
-            Purpose-built for NHS nursing applications
-          </div>
-        </div>
-
         {/* Headline */}
-        <div className="text-center max-w-4xl mx-auto">
+        <div className="text-center max-w-4xl mx-auto mt-24">
           <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-foreground leading-[1.1] text-balance mb-6">
-            Your NHS application,{" "}
-            <span className="text-primary">tailored in minutes.</span>{" "}
-            Not hours.
+            Your NHS job application,{" "}
+            <span className="text-primary">done in minutes.</span>
           </h1>
           <p className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-2xl mx-auto text-pretty mb-10">
             NurseJobPilot reads the job listing, matches your experience to each
