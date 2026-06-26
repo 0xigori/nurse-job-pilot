@@ -1,6 +1,6 @@
 import { Button } from "./ui/button";
-import { Field } from "./ui/field";
 import { Input } from "./ui/input";
+import { WaitListForm } from "./waitlist-form";
 
 export function Hero() {
   return (
@@ -28,19 +28,8 @@ export function Hero() {
             statement, and autofills the application form.
           </p>
 
-          {/* CTAs */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
-            <Field orientation="horizontal" className="w-full sm:w-auto">
-              <Input
-                type="text"
-                className="px-4 py-6 min-w-sm sm:w-auto placeholder:text-sm md:placeholder:text-base"
-                placeholder="Enter your email" />
-              <Button className="inline-flex items-center gap-2 px-6 py-6 bg-primary text-primary-foreground text-md font-semibold rounded-md hover:bg-primary/90 transition-colors shadow-sm">
-                <img src="/icon-light-32x32.png" alt="NurseJobPilot Logo" className="h-4 w-4" />
-                Join the waitlist
-              </Button>
-            </Field>
-          </div>
+          {/* Waitlist */}
+          <WaitListForm />
 
           {/* Trust line */}
           <p className="mt-5 text-xs text-muted-foreground">

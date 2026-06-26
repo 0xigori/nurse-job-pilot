@@ -2,6 +2,7 @@ import { useTheme } from "./theme-provider"
 import { Button } from "./ui/button"
 import { Input } from "./ui/input"
 import { Field } from "./ui/field"
+import { WaitListForm } from "./waitlist-form"
 
 export function CTA() {
   return (
@@ -17,18 +18,8 @@ export function CTA() {
             tailored application for the first role you are interested in —
             before you decide whether to subscribe.
           </p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
-            <Field orientation="horizontal" className="w-full sm:w-auto">
-              <Input
-                type="text"
-                className="px-4 py-6 min-w-sm sm:w-auto text-sm md:text-base text-primary-foreground placeholder:text-sm md:placeholder:text-base placeholder:text-primary-foreground"
-                placeholder="Enter your email" />
-              <Button className="inline-flex items-center gap-2 px-6 py-6 bg-primary-foreground text-primary text-md font-semibold rounded-md hover:bg-primary-foreground/90 transition-colors shadow-sm">
-                <img src="/icon-dark-32x32.png" alt="NurseJobPilot Logo" className="h-4 w-4" />
-                Join the waitlist
-              </Button>
-            </Field>
-          </div>
+          {/* Waitlist */}
+          <WaitListForm background="dark" />
           <p className="mt-5 text-xs text-primary-foreground/50">
             Browser extension · UK GDPR compliant · Cancel any time
           </p>
@@ -39,7 +30,7 @@ export function CTA() {
 }
 
 export function Footer() {
-  const { theme, toggleTheme } = useTheme()
+  const { theme } = useTheme()
 
   return (
     <footer className="bg-foreground text-background">
