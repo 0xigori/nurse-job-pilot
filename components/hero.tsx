@@ -1,3 +1,7 @@
+import { Button } from "./ui/button";
+import { Field } from "./ui/field";
+import { Input } from "./ui/input";
+
 export function Hero() {
   return (
     <section className="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden">
@@ -18,33 +22,42 @@ export function Hero() {
             Your NHS job application,{" "}
             <span className="text-primary">done in minutes.</span>
           </h1>
-          <p className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-2xl mx-auto text-pretty mb-10">
-            NurseJobPilot reads the job listing, matches your experience to each
+          <p id="join" className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-2xl mx-auto text-pretty mb-10">
+            NurseJobPilot is a browser extension that reads the job listing, matches your experience to each
             essential criterion, and generates a tailored CV, supporting
-            statement, and cover letter — then autofills the application form.
+            statement, and autofills the application form.
           </p>
 
           {/* CTAs */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
-            <a
-              href="#"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground text-sm font-semibold rounded-[6px] hover:bg-primary/90 transition-colors shadow-sm"
-            >
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                <rect x="1" y="1" width="14" height="14" rx="3" stroke="currentColor" strokeWidth="1.5"/>
-                <path d="M5.5 8l2 2 3-3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
-              Add to Chrome — It&apos;s Free
-            </a>
-            <a
-              href="#how-it-works"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-secondary text-secondary-foreground text-sm font-medium rounded-[6px] hover:bg-secondary/80 transition-colors border border-border"
-            >
-              See how it works
-              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-                <path d="M2 7h10M8.5 4.5L11 7l-2.5 2.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
-            </a>
+
+            {/* <input
+              type="email"
+              placeholder="Enter your email"
+              className="px-4 py-3 rounded-md border border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent w-full sm:w-auto"
+            />
+            <button
+              type="button"
+              onClick={() => { }}            >
+              <a
+                href="#"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground text-sm font-semibold rounded-md hover:bg-primary/90 transition-colors shadow-sm"
+              >
+                <img src="/icon-light-32x32.png" alt="NurseJobPilot Logo" className="h-4 w-4" />
+                Join the waitlist
+              </a>
+            </button> */}
+
+            <Field orientation="horizontal" className="w-full sm:w-auto">
+              <Input
+                type="text"
+                className="px-4 py-6 min-w-sm sm:w-auto placeholder:text-sm md:placeholder:text-base"
+                placeholder="Enter your email" />
+              <Button className="inline-flex items-center gap-2 px-6 py-6 bg-primary text-primary-foreground text-md font-semibold rounded-md hover:bg-primary/90 transition-colors shadow-sm">
+                <img src="/icon-light-32x32.png" alt="NurseJobPilot Logo" className="h-4 w-4" />
+                Join the waitlist
+              </Button>
+            </Field>
           </div>
 
           {/* Trust line */}
@@ -56,7 +69,7 @@ export function Hero() {
         {/* Extension preview */}
         <div className="mt-16 md:mt-20 relative max-w-5xl mx-auto">
           {/* Browser chrome wrapper */}
-          <div className="rounded-[10px] border border-border shadow-2xl overflow-hidden bg-card">
+          <div className="rounded-lg border border-border shadow-2xl overflow-hidden bg-card">
             {/* Browser chrome bar */}
             <div className="h-10 bg-muted border-b border-border flex items-center px-4 gap-2">
               <div className="flex gap-1.5">
@@ -65,7 +78,7 @@ export function Hero() {
                 <span className="w-3 h-3 rounded-full bg-border" />
               </div>
               <div className="flex-1 mx-4">
-                <div className="h-5 bg-background rounded-[4px] flex items-center px-3">
+                <div className="h-5 bg-background rounded-sm flex items-center px-3">
                   <span className="text-[11px] text-muted-foreground truncate">
                     jobs.nhs.uk/vacancy/ICU-Staff-Nurse-Band-5
                   </span>
@@ -73,13 +86,13 @@ export function Hero() {
               </div>
             </div>
             {/* Content area */}
-            <div className="relative flex min-h-[380px] md:min-h-[460px]">
+            <div className="relative flex min-h-95 md:min-h-115">
               {/* Main page area (blurred/dimmed NHS Jobs page simulation) */}
               <div className="flex-1 bg-background p-6 hidden md:block">
                 <div className="space-y-3 max-w-lg">
                   <div className="text-xs text-muted-foreground uppercase tracking-wide font-medium">NHS Jobs</div>
-                  <div className="h-7 w-72 bg-muted rounded-[4px]" />
-                  <div className="h-4 w-48 bg-muted/70 rounded-[4px]" />
+                  <div className="h-7 w-72 bg-muted rounded-sm" />
+                  <div className="h-4 w-48 bg-muted/70 rounded-sm" />
                   <div className="h-px bg-border my-4" />
                   <div className="space-y-2">
                     <div className="h-3 w-full bg-muted/50 rounded" />
@@ -93,7 +106,7 @@ export function Hero() {
                     <div className="space-y-1.5">
                       {[...Array(5)].map((_, i) => (
                         <div key={i} className="flex items-center gap-2">
-                          <span className="w-1 h-1 rounded-full bg-muted-foreground/40 flex-shrink-0" />
+                          <span className="w-1 h-1 rounded-full bg-muted-foreground/40 shrink-0" />
                           <div className="h-3 bg-muted/40 rounded" style={{ width: `${60 + i * 8}%` }} />
                         </div>
                       ))}
@@ -103,11 +116,11 @@ export function Hero() {
               </div>
 
               {/* NurseJobPilot sidebar panel */}
-              <div className="w-full md:w-80 flex-shrink-0 bg-card border-l border-border flex flex-col overflow-hidden">
+              <div className="w-full md:w-80 shrink-0 bg-card border-l border-border flex flex-col overflow-hidden">
                 {/* Sidebar header */}
-                <div className="h-11 bg-primary flex items-center justify-between px-3 flex-shrink-0">
+                <div className="h-11 bg-primary flex items-center justify-between px-3 shrink-0">
                   <div className="flex items-center gap-2">
-                    <div className="w-5 h-5 rounded-[4px] bg-primary-foreground/20 flex items-center justify-center">
+                    <div className="w-5 h-5 rounded-sm bg-primary-foreground/20 flex items-center justify-center">
                       <svg width="11" height="11" viewBox="0 0 11 11" fill="none" aria-hidden="true">
                         <path d="M5.5 1L7 4H10L7.5 6.5L8.5 10L5.5 8L2.5 10L3.5 6.5L1 4H4L5.5 1Z" fill="white" />
                       </svg>
@@ -127,10 +140,10 @@ export function Hero() {
                 </div>
 
                 {/* Job header */}
-                <div className="p-3 border-b border-border flex-shrink-0">
+                <div className="p-3 border-b border-border shrink-0">
                   <div className="flex items-start justify-between gap-2 mb-1.5">
                     <h3 className="text-[13px] font-semibold text-foreground leading-tight">ICU Staff Nurse</h3>
-                    <span className="flex-shrink-0 text-[10px] font-semibold bg-primary text-primary-foreground px-2 py-0.5 rounded-full">Band 5</span>
+                    <span className="shrink-0 text-[10px] font-semibold bg-primary text-primary-foreground px-2 py-0.5 rounded-full">Band 5</span>
                   </div>
                   <p className="text-[11px] text-muted-foreground">Barts Health NHS Trust · London</p>
                   <div className="flex items-center gap-3 mt-2 text-[10px] text-muted-foreground">
@@ -141,28 +154,28 @@ export function Hero() {
                 </div>
 
                 {/* Criteria summary */}
-                <div className="px-3 py-2.5 border-b border-border flex-shrink-0">
+                <div className="px-3 py-2.5 border-b border-border shrink-0">
                   <div className="flex items-center justify-between mb-2">
                     <span className="text-[11px] font-medium text-foreground">12 essential criteria</span>
                   </div>
                   <div className="flex items-center gap-3 text-[10px]">
                     <div className="flex items-center gap-1">
-                      <span className="w-2 h-2 rounded-full bg-green-500 flex-shrink-0" />
+                      <span className="w-2 h-2 rounded-full bg-green-500 shrink-0" />
                       <span className="text-muted-foreground">10 high</span>
                     </div>
                     <div className="flex items-center gap-1">
-                      <span className="w-2 h-2 rounded-full bg-amber-500 flex-shrink-0" />
+                      <span className="w-2 h-2 rounded-full bg-amber-500 shrink-0" />
                       <span className="text-muted-foreground">1 mid</span>
                     </div>
                     <div className="flex items-center gap-1">
-                      <span className="w-2 h-2 rounded-full bg-red-500 flex-shrink-0" />
+                      <span className="w-2 h-2 rounded-full bg-red-500 shrink-0" />
                       <span className="text-muted-foreground">1 needs input</span>
                     </div>
                   </div>
                 </div>
 
                 {/* Action buttons */}
-                <div className="p-3 grid grid-cols-2 gap-2 flex-shrink-0">
+                <div className="p-3 grid grid-cols-2 gap-2 shrink-0">
                   {[
                     { label: "Tailor CV", primary: true },
                     { label: "Cover Letter", primary: false },
@@ -171,11 +184,10 @@ export function Hero() {
                   ].map((btn) => (
                     <button
                       key={btn.label}
-                      className={`text-[11px] font-medium py-2 px-2 rounded-[6px] transition-colors text-center ${
-                        btn.primary
-                          ? "bg-primary text-primary-foreground hover:bg-primary/90"
-                          : "bg-secondary text-secondary-foreground border border-border hover:bg-muted"
-                      }`}
+                      className={`text-[11px] font-medium py-2 px-2 rounded-[6px] transition-colors text-center ${btn.primary
+                        ? "bg-primary text-primary-foreground hover:bg-primary/90"
+                        : "bg-secondary text-secondary-foreground border border-border hover:bg-muted"
+                        }`}
                     >
                       {btn.label}
                     </button>
@@ -183,7 +195,7 @@ export function Hero() {
                 </div>
 
                 {/* Save role button */}
-                <div className="px-3 pb-3 flex-shrink-0">
+                <div className="px-3 pb-3 shrink-0">
                   <button className="w-full text-[11px] font-medium py-2 border border-border rounded-[6px] text-muted-foreground hover:bg-muted transition-colors">
                     Save role
                   </button>
@@ -198,15 +210,14 @@ export function Hero() {
                       { text: "ICU / critical care experience", conf: "high" },
                       { text: "Demonstrates NHS values", conf: "low" },
                     ].map((c) => (
-                      <div key={c.text} className="flex items-center gap-2 py-1.5 px-2 rounded-[4px] bg-muted/50">
+                      <div key={c.text} className="flex items-center gap-2 py-1.5 px-2 rounded-sm bg-muted/50">
                         <span
-                          className={`w-2 h-2 rounded-full flex-shrink-0 ${
-                            c.conf === "high"
-                              ? "bg-green-500"
-                              : c.conf === "mid"
+                          className={`w-2 h-2 rounded-full shrink-0 ${c.conf === "high"
+                            ? "bg-green-500"
+                            : c.conf === "mid"
                               ? "bg-amber-500"
                               : "bg-red-500"
-                          }`}
+                            }`}
                         />
                         <span className="text-[10px] text-foreground leading-tight truncate">{c.text}</span>
                       </div>
@@ -224,7 +235,7 @@ export function Hero() {
           </div>
           <div className="absolute -top-3 right-4 md:right-8 hidden sm:flex items-center gap-2 bg-accent text-accent-foreground shadow-lg rounded-[8px] px-3 py-2">
             <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
-              <path d="M2 6l3 3 5-5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+              <path d="M2 6l3 3 5-5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
             <span className="text-xs font-medium">NHS Jobs · TRAC · and more</span>
           </div>

@@ -63,12 +63,10 @@ export function Navbar() {
             )}
           </button>
           <a
-            href="#"
+            href="#join"
             className="inline-flex items-center gap-1.5 px-4 py-2 bg-primary text-primary-foreground font-medium rounded-md hover:bg-primary/90 transition-colors"
           >
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-              <path d="M3 7h8M8.5 4.5L11 7l-2.5 2.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
+            <img src="/icon-light-32x32.png" alt="NurseJobPilot Logo" className="h-4 w-4" />
             Join the waitlist
           </a>
         </div>
@@ -132,10 +130,7 @@ export function Navbar() {
                 </>
               )}
             </button>
-            <a href="#" className="px-3 py-2.5 text-sm text-muted-foreground hover:text-foreground rounded-md transition-colors">
-              Sign in
-            </a>
-            <a href="#" className="flex items-center justify-center gap-1.5 px-4 py-2.5 bg-primary text-primary-foreground text-sm font-medium rounded-md hover:bg-primary/90 transition-colors">
+            <a href="#join" className="flex items-center justify-center gap-1.5 px-4 py-2.5 bg-primary text-primary-foreground text-sm font-medium rounded-md hover:bg-primary/90 transition-colors">
               Join the waitlist
             </a>
           </div>
