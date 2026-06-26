@@ -2,6 +2,13 @@ import { useState, useEffect } from "react"
 import { useTheme } from "@/components/theme-provider"
 import { DesktopButtonMode, MobileButtonMode } from "./theme-mode"
 
+const NAV_LINKS = [
+  { label: "How it works", href: "#how-it-works" },
+  { label: "Features",     href: "#features" },
+  { label: "Job sites",    href: "#job-sites" },
+  { label: "FAQ",          href: "#faq" },
+]
+
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
@@ -28,18 +35,11 @@ export function Navbar() {
 
         {/* Desktop nav */}
         <nav className="hidden md:flex items-center gap-1" aria-label="Main navigation">
-          <a href="#how-it-works" className="px-3 py-2 text-muted-foreground hover:text-foreground transition-colors rounded-md hover:bg-muted">
-            How it works
-          </a>
-          <a href="#features" className="px-3 py-2 text-muted-foreground hover:text-foreground transition-colors rounded-md hover:bg-muted">
-            Features
-          </a>
-          <a href="#pricing" className="px-3 py-2 text-muted-foreground hover:text-foreground transition-colors rounded-md hover:bg-muted">
-            Pricing
-          </a>
-          <a href="#faq" className="px-3 py-2 text-muted-foreground hover:text-foreground transition-colors rounded-md hover:bg-muted">
-            FAQ
-          </a>
+          {NAV_LINKS.map(({ label, href }) => (
+            <a key={href} href={href} className="px-3 py-2 text-muted-foreground hover:text-foreground transition-colors rounded-md hover:bg-muted">
+              {label}
+            </a>
+          ))}
         </nav>
 
         {/* CTA */}
@@ -77,18 +77,11 @@ export function Navbar() {
       {/* Mobile menu */}
       {menuOpen && (
         <div className="md:hidden bg-background border-b border-border px-6 pb-4 flex flex-col gap-1">
-          <a href="#how-it-works" onClick={() => setMenuOpen(false)} className="px-3 py-2.5 text-sm text-muted-foreground hover:text-foreground rounded-md hover:bg-muted transition-colors">
-            How it works
-          </a>
-          <a href="#features" onClick={() => setMenuOpen(false)} className="px-3 py-2.5 text-sm text-muted-foreground hover:text-foreground rounded-md hover:bg-muted transition-colors">
-            Features
-          </a>
-          <a href="#pricing" onClick={() => setMenuOpen(false)} className="px-3 py-2.5 text-sm text-muted-foreground hover:text-foreground rounded-md hover:bg-muted transition-colors">
-            Pricing
-          </a>
-          <a href="#faq" onClick={() => setMenuOpen(false)} className="px-3 py-2.5 text-sm text-muted-foreground hover:text-foreground rounded-md hover:bg-muted transition-colors">
-            FAQ
-          </a>
+          {NAV_LINKS.map(({ label, href }) => (
+            <a key={href} href={href} onClick={() => setMenuOpen(false)} className="px-3 py-2.5 text-sm text-muted-foreground hover:text-foreground rounded-md hover:bg-muted transition-colors">
+              {label}
+            </a>
+          ))}
           <div className="pt-2 border-t border-border mt-1 flex flex-col gap-2">
             {/* <MobileButtonMode /> */}
             <a href="#join" className="flex items-center justify-center gap-1.5 px-4 py-2.5 bg-primary text-primary-foreground text-sm font-medium rounded-md hover:bg-primary/90 transition-colors">

@@ -10,7 +10,7 @@ const JOB_SITE_LOGOS = [
 
 export function JobSites() {
   return (
-    <section id="features" className="bg-muted/30">
+    <section id="job-sites" className="bg-muted/30">
       <div className="max-w-6xl mx-auto px-6">
         {/* Supported sites marquee */}
         <div className="mt-12">
