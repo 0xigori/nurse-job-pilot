@@ -63,9 +63,6 @@ export function HowItWorks() {
       <div className="max-w-6xl mx-auto px-6">
         {/* Section header */}
         <div className="max-w-2xl mb-16">
-          <p className="text-xs font-semibold uppercase tracking-widest text-accent mb-4">
-            How it works
-          </p>
           <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-foreground text-balance leading-[1.2] mb-4">
             From job listing to submitted application — in one workflow.
           </h2>

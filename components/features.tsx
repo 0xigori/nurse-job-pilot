@@ -1,6 +1,16 @@
+const JOB_SITE_LOGOS = [
+  { badge: "NHS", badgeClass: "badge-nhs", name: "NHS Jobs", img: "/logos/nhs-jobs.png" },
+  { badge: "trac", badgeClass: "badge-trac", name: "Trac Jobs", img: "/logos/trac-jobs.png" },
+  { badge: "HJ", badgeClass: "badge-hj-uk", name: "HealthJobsUK", img: "/logos/healthjobs-uk.png" },
+  { badge: "NN", badgeClass: "badge-nn", name: "NursingNetUK", img: "/logos/nursingnet-uk.png" },
+  { badge: "N", badgeClass: "badge-nurses", name: "Nurses.co.uk", img: "/logos/nurses-co-uk.png" },
+  { badge: "HJ", badgeClass: "badge-hj-co", name: "HealthJobs.co.uk", img: "/logos/healthjobs-co-uk.png" },
+  { badge: "bupa", badgeClass: "badge-bupa", name: "Care Homes", img: "/logos/bupa.png" },
+]
+
 function FeatureIcon({ path }: { path: React.ReactNode }) {
   return (
-    <div className="w-10 h-10 rounded-[6px] bg-teal-subtle border border-accent/20 flex items-center justify-center flex-shrink-0">
+    <div className="w-10 h-10 rounded-md bg-teal-subtle border border-accent/20 flex items-center justify-center shrink-0">
       <svg width="18" height="18" viewBox="0 0 18 18" fill="none" className="text-accent" aria-hidden="true">
         {path}
       </svg>
@@ -11,7 +21,7 @@ function FeatureIcon({ path }: { path: React.ReactNode }) {
 const features = [
   {
     icon: (
-      <path d="M3 4h12M3 8h8M3 12h10" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+      <path d="M3 4h12M3 8h8M3 12h10" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
     ),
     title: "NHS-specific CV generation",
     description:
@@ -20,7 +30,7 @@ const features = [
   },
   {
     icon: (
-      <path d="M15 3H3v12h12V3zM6 7h6M6 10h4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+      <path d="M15 3H3v12h12V3zM6 7h6M6 10h4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
     ),
     title: "Supporting statement & cover letter",
     description:
@@ -29,7 +39,7 @@ const features = [
   },
   {
     icon: (
-      <path d="M14 8h-4V4M14 8l-5 5-3-3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+      <path d="M14 8h-4V4M14 8l-5 5-3-3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
     ),
     title: "AI-driven form autofill",
     description:
@@ -38,7 +48,7 @@ const features = [
   },
   {
     icon: (
-      <path d="M9 3v6l4 2M3 9a6 6 0 1 0 12 0 6 6 0 0 0-12 0z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+      <path d="M9 3v6l4 2M3 9a6 6 0 1 0 12 0 6 6 0 0 0-12 0z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
     ),
     title: "Application tracker",
     description:
@@ -47,7 +57,7 @@ const features = [
   },
   {
     icon: (
-      <path d="M9 2l1.5 3H14l-2.5 2 1 3L9 8.5 6.5 10l1-3L5 5h3.5L9 2z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+      <path d="M9 2l1.5 3H14l-2.5 2 1 3L9 8.5 6.5 10l1-3L5 5h3.5L9 2z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
     ),
     title: "Confidence-first generation",
     description:
@@ -56,7 +66,7 @@ const features = [
   },
   {
     icon: (
-      <path d="M4 9h10M9 4l5 5-5 5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+      <path d="M4 9h10M9 4l5 5-5 5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
     ),
     title: "Contextual job chat",
     description:
@@ -71,9 +81,6 @@ export function Features() {
       <div className="max-w-6xl mx-auto px-6">
         {/* Section header */}
         <div className="max-w-2xl mb-16">
-          {/* <p className="text-xs font-semibold uppercase tracking-widest text-accent mb-4">
-            Features
-          </p> */}
           <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-foreground text-balance leading-[1.2] mb-4">
             Everything a UK nursing application requires. Nothing it does not.
           </h2>
@@ -88,7 +95,7 @@ export function Features() {
           {features.map((feature) => (
             <div
               key={feature.title}
-              className="bg-card border border-border rounded-[10px] p-6 flex flex-col gap-4 hover:border-accent/30 hover:shadow-sm transition-all duration-200"
+              className="bg-card border border-border rounded-lg p-6 flex flex-col gap-4 hover:border-accent/30 hover:shadow-sm transition-all duration-200"
             >
               <div className="flex items-start justify-between gap-3">
                 <FeatureIcon path={feature.icon} />
@@ -106,34 +113,6 @@ export function Features() {
               </div>
             </div>
           ))}
-        </div>
-
-        {/* Supported sites row */}
-        <div className="mt-12 p-6 bg-card border border-border rounded-[10px]">
-          <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground mb-4">
-            Supported job sites
-          </p>
-          <div className="flex flex-wrap gap-2">
-            {[
-              "NHS Jobs",
-              "TRAC Jobs",
-              "HealthJobsUK",
-              "NursingNetUK",
-              "Nurses.co.uk",
-              "HealthJobs.co.uk",
-              "Bupa Care Homes",
-              "Barchester Healthcare",
-              "NHS Trust career pages",
-            ].map((site) => (
-              <span
-                key={site}
-                className="inline-flex items-center gap-1.5 text-xs font-medium px-3 py-1.5 bg-muted border border-border rounded-full text-foreground"
-              >
-                <span className="w-1.5 h-1.5 rounded-full bg-accent flex-shrink-0" />
-                {site}
-              </span>
-            ))}
-          </div>
         </div>
       </div>
     </section>

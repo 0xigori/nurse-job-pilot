@@ -4,7 +4,13 @@
 
 @custom-variant dark (&:is(.dark *));
 
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
 @theme inline {
+  --animate-marquee: marquee 28s linear infinite;
   --font-sans: var(--font-geist-sans), 'Geist Fallback';
   --font-mono: var(--font-geist-mono), 'Geist Mono Fallback';
   --color-sidebar-ring: var(--sidebar-ring);
@@ -132,6 +138,20 @@
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.8 0.12 185.5);
 }
+
+/* Marquee gradient fade edges */
+.marquee-fade-left  { background: linear-gradient(to right, var(--card), transparent); }
+.marquee-fade-right { background: linear-gradient(to left, var(--card), transparent); }
+
+/* Per-brand badge colours */
+.badge-nhs         { background-color: #005EB8; }
+.badge-trac        { background-color: #E05433; }
+.badge-hj-uk       { background-color: #00875A; }
+.badge-nn          { background-color: #1B4FBA; }
+.badge-nurses      { background-color: #7C3AED; }
+.badge-hj-co       { background-color: #0D9E6E; }
+.badge-bupa        { background-color: #1C3A6B; }
+.badge-barchester  { background-color: #1A6035; }
 
 @layer base {
   * {

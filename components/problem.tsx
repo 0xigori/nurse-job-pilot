@@ -3,9 +3,6 @@ export function Problem() {
     <section className="py-20 md:py-28 bg-primary text-primary-foreground">
       <div className="max-w-6xl mx-auto px-6">
         <div className="max-w-3xl mx-auto text-center mb-14">
-          <p className="text-xs font-semibold uppercase tracking-widest text-primary-foreground/60 mb-4">
-            The problem
-          </p>
           <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-balance mb-6 leading-[1.15]">
             Every NHS application takes{" "}
             <span className="text-accent" style={{ color: "#2DD4BF" }}>
