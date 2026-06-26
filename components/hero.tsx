@@ -30,24 +30,6 @@ export function Hero() {
 
           {/* CTAs */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
-
-            {/* <input
-              type="email"
-              placeholder="Enter your email"
-              className="px-4 py-3 rounded-md border border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent w-full sm:w-auto"
-            />
-            <button
-              type="button"
-              onClick={() => { }}            >
-              <a
-                href="#"
-                className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground text-sm font-semibold rounded-md hover:bg-primary/90 transition-colors shadow-sm"
-              >
-                <img src="/icon-light-32x32.png" alt="NurseJobPilot Logo" className="h-4 w-4" />
-                Join the waitlist
-              </a>
-            </button> */}
-
             <Field orientation="horizontal" className="w-full sm:w-auto">
               <Input
                 type="text"

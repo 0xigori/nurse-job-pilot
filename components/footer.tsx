@@ -1,3 +1,8 @@
+import { useTheme } from "./theme-provider"
+import { Button } from "./ui/button"
+import { Input } from "./ui/input"
+import { Field } from "./ui/field"
+
 export function CTA() {
   return (
     <section className="py-20 md:py-28 bg-primary">
@@ -13,23 +18,16 @@ export function CTA() {
             before you decide whether to subscribe.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
-            <a
-              href="#"
-              className="inline-flex items-center gap-2 px-6 py-3 text-sm font-semibold rounded-[6px] transition-all"
-              style={{ background: "#0F766E", color: "#fff" }}
-            >
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                <rect x="1" y="1" width="14" height="14" rx="3" stroke="currentColor" strokeWidth="1.5"/>
-                <path d="M5.5 8l2 2 3-3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
-              Add to Chrome — Free
-            </a>
-            <a
-              href="#how-it-works"
-              className="inline-flex items-center gap-2 px-6 py-3 border border-primary-foreground/30 text-primary-foreground text-sm font-medium rounded-[6px] hover:border-primary-foreground/60 transition-colors"
-            >
-              See how it works
-            </a>
+            <Field orientation="horizontal" className="w-full sm:w-auto">
+              <Input
+                type="text"
+                className="px-4 py-6 min-w-sm sm:w-auto text-sm md:text-base text-primary-foreground placeholder:text-sm md:placeholder:text-base placeholder:text-primary-foreground"
+                placeholder="Enter your email" />
+              <Button className="inline-flex items-center gap-2 px-6 py-6 bg-primary-foreground text-primary text-md font-semibold rounded-md hover:bg-primary-foreground/90 transition-colors shadow-sm">
+                <img src="/icon-dark-32x32.png" alt="NurseJobPilot Logo" className="h-4 w-4" />
+                Join the waitlist
+              </Button>
+            </Field>
           </div>
           <p className="mt-5 text-xs text-primary-foreground/50">
             Chrome extension · UK GDPR compliant · Cancel any time
@@ -41,6 +39,8 @@ export function CTA() {
 }
 
 export function Footer() {
+  const { theme, toggleTheme } = useTheme()
+
   return (
     <footer className="bg-foreground text-background">
       <div className="max-w-6xl mx-auto px-6 py-12">
@@ -48,14 +48,7 @@ export function Footer() {
           {/* Brand */}
           <div className="col-span-2 md:col-span-1">
             <div className="flex items-center gap-2 mb-4">
-              <div className="w-7 h-7 rounded-[5px] bg-primary flex items-center justify-center">
-                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-                  <path d="M7 1L9 5.5H13.5L10 8.5L11.5 13L7 10L2.5 13L4 8.5L0.5 5.5H5L7 1Z" fill="white" />
-                </svg>
-              </div>
-              <span className="font-semibold text-sm text-background">
-                NurseJob<span className="opacity-60">Pilot</span>
-              </span>
+              <img src={theme === "dark" ? "/logo-dark.png" : "/logo-light.png"} alt="NurseJobPilot Logo" className="h-12" />
             </div>
             <p className="text-xs text-background/50 leading-relaxed max-w-48">
               Purpose-built for UK nursing job applications. From profile to submitted form.
