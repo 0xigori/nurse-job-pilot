@@ -1,6 +1,3 @@
-import Image from "next/image"
-import Link from "next/link"
-
 export function Hero() {
   return (
     <section className="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden">
@@ -38,7 +35,7 @@ export function Hero() {
 
           {/* CTAs */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
-            <Link
+            <a
               href="#"
               className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground text-sm font-semibold rounded-[6px] hover:bg-primary/90 transition-colors shadow-sm"
             >
@@ -47,8 +44,8 @@ export function Hero() {
                 <path d="M5.5 8l2 2 3-3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
               Add to Chrome — It&apos;s Free
-            </Link>
-            <Link
+            </a>
+            <a
               href="#how-it-works"
               className="inline-flex items-center gap-2 px-6 py-3 bg-secondary text-secondary-foreground text-sm font-medium rounded-[6px] hover:bg-secondary/80 transition-colors border border-border"
             >
@@ -56,7 +53,7 @@ export function Hero() {
               <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
                 <path d="M2 7h10M8.5 4.5L11 7l-2.5 2.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
-            </Link>
+            </a>
           </div>
 
           {/* Trust line */}

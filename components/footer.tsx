@@ -1,5 +1,3 @@
-import Link from "next/link"
-
 export function CTA() {
   return (
     <section className="py-20 md:py-28 bg-primary">
@@ -15,7 +13,7 @@ export function CTA() {
             before you decide whether to subscribe.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
-            <Link
+            <a
               href="#"
               className="inline-flex items-center gap-2 px-6 py-3 text-sm font-semibold rounded-[6px] transition-all"
               style={{ background: "#0F766E", color: "#fff" }}
@@ -25,13 +23,13 @@ export function CTA() {
                 <path d="M5.5 8l2 2 3-3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
               Add to Chrome — Free
-            </Link>
-            <Link
+            </a>
+            <a
               href="#how-it-works"
               className="inline-flex items-center gap-2 px-6 py-3 border border-primary-foreground/30 text-primary-foreground text-sm font-medium rounded-[6px] hover:border-primary-foreground/60 transition-colors"
             >
               See how it works
-            </Link>
+            </a>
           </div>
           <p className="mt-5 text-xs text-primary-foreground/50">
             Chrome extension · UK GDPR compliant · Cancel any time
@@ -75,9 +73,9 @@ export function Footer() {
                 { label: "FAQ", href: "#faq" },
               ].map((link) => (
                 <li key={link.label}>
-                  <Link href={link.href} className="text-sm text-background/60 hover:text-background transition-colors">
+                  <a href={link.href} className="text-sm text-background/60 hover:text-background transition-colors">
                     {link.label}
-                  </Link>
+                  </a>
                 </li>
               ))}
             </ul>
@@ -94,9 +92,9 @@ export function Footer() {
                 { label: "Contact us", href: "#" },
               ].map((link) => (
                 <li key={link.label}>
-                  <Link href={link.href} className="text-sm text-background/60 hover:text-background transition-colors">
+                  <a href={link.href} className="text-sm text-background/60 hover:text-background transition-colors">
                     {link.label}
-                  </Link>
+                  </a>
                 </li>
               ))}
             </ul>
@@ -113,9 +111,9 @@ export function Footer() {
                 { label: "UK GDPR", href: "#" },
               ].map((link) => (
                 <li key={link.label}>
-                  <Link href={link.href} className="text-sm text-background/60 hover:text-background transition-colors">
+                  <a href={link.href} className="text-sm text-background/60 hover:text-background transition-colors">
                     {link.label}
-                  </Link>
+                  </a>
                 </li>
               ))}
             </ul>

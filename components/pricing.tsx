@@ -1,7 +1,4 @@
-"use client"
-
 import { useState } from "react"
-import Link from "next/link"
 
 export function Pricing() {
   const [billing, setBilling] = useState<"weekly" | "monthly">("monthly")
@@ -65,6 +62,7 @@ export function Pricing() {
         <div className="flex items-center justify-center mb-10">
           <div className="flex items-center bg-muted rounded-[6px] p-1 gap-1">
             <button
+              type="button"
               onClick={() => setBilling("weekly")}
               className={`px-4 py-2 text-sm font-medium rounded-[4px] transition-all ${
                 billing === "weekly"
@@ -75,6 +73,7 @@ export function Pricing() {
               Weekly
             </button>
             <button
+              type="button"
               onClick={() => setBilling("monthly")}
               className={`px-4 py-2 text-sm font-medium rounded-[4px] transition-all flex items-center gap-2 ${
                 billing === "monthly"
@@ -125,7 +124,7 @@ export function Pricing() {
                 </p>
               </div>
 
-              <Link
+              <a
                 href="#"
                 className={`flex items-center justify-center gap-2 px-6 py-2.5 text-sm font-semibold rounded-[6px] transition-colors ${
                   plan.ctaStyle === "primary"
@@ -137,7 +136,7 @@ export function Pricing() {
                 <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
                   <path d="M2 7h10M8.5 4.5L11 7l-2.5 2.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
-              </Link>
+              </a>
 
               <ul className="space-y-2.5 flex-1">
                 {plan.features.map((feature) => (
