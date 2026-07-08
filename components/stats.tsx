@@ -33,7 +33,7 @@ export function Stats() {
     },
     {
       quote:
-        "I was applying to five roles at once and spending entire weekends just on applications. Now I open the listing, click Tailor CV, review it, and I am done. The autofill is genuinely impressive — it even reads the weird custom fields on trust-specific forms.",
+        "I was applying to five roles at once and spending entire weekends just on applications. Now I open the listing, click Tailor CV, review it, and I am done. The autofill is genuinely impressive; it even reads the weird custom fields on trust-specific forms.",
       name: "Priya M.",
       role: "Community Nurse, Band 6",
       location: "Midlands NHS Trust",

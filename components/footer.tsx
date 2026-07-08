@@ -16,7 +16,7 @@ export function CTA() {
           </h2>
           <p className="text-base text-primary-foreground/70 leading-relaxed mb-10 text-pretty">
             Install the extension, build your profile, and generate a complete
-            tailored application for the first role you are interested in —
+            tailored application for the first role you are interested in,
             before you decide whether to subscribe.
           </p>
           {/* Waitlist */}

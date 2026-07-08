@@ -9,7 +9,7 @@ const faqs = [
   {
     question: "Does it work for international nurses?",
     answer:
-      "Yes — this is the primary use case. International nurses with strong clinical experience from the Philippines, India, Nigeria, and other countries are structurally disadvantaged by NHS application format alone. NurseJobPilot translates your experience into the exact structure UK NHS hiring panels expect.",
+      "Yes, this is the primary use case. International nurses with strong clinical experience from the Philippines, India, Nigeria, and other countries are structurally disadvantaged by NHS application format alone. NurseJobPilot translates your experience into the exact structure UK NHS hiring panels expect.",
   },
   {
     question: "Will my profile data be stored securely?",
@@ -19,7 +19,7 @@ const faqs = [
   {
     question: "Does it submit my application automatically?",
     answer:
-      "No — and this is by design. NurseJobPilot prefills the form fields and highlights what it has filled. You review every field before submitting manually. The extension never auto-submits, and it never silently overwrites a field you have already filled yourself.",
+      "No, and this is by design. NurseJobPilot prefills the form fields and highlights what it has filled. You review every field before submitting manually. The extension never auto-submits, and it never silently overwrites a field you have already filled yourself.",
   },
   {
     question: "What happens if the extension cannot find the person specification?",
@@ -29,7 +29,7 @@ const faqs = [
   {
     question: "How is this different from ChatGPT or a generic CV builder?",
     answer:
-      "Generic AI tools do not know what NHS person specifications are, how STAR format works in a clinical context, what AfC band language sounds like, or how NHS Trust application forms are structured. NurseJobPilot is built specifically for this workflow — it reads the live job page, maps your clinical experience, and handles the autofill. No copy-pasting, no rephrasing prompts.",
+      "Generic AI tools do not know what NHS person specifications are, how STAR format works in a clinical context, what AfC band language sounds like, or how NHS Trust application forms are structured. NurseJobPilot is built specifically for this workflow: it reads the live job page, maps your clinical experience, and handles the autofill. No copy-pasting, no rephrasing prompts.",
   },
   {
     question: "Which browsers and job sites are supported?",
@@ -39,7 +39,7 @@ const faqs = [
   {
     question: "Can I use my documents across multiple devices?",
     answer:
-      "Yes. Your profile and all generated document metadata are stored server-side. Log in on any device with Chrome installed and your profile and application history are available immediately — no re-import or re-entry required.",
+      "Yes. Your profile and all generated document metadata are stored server-side. Log in on any device with Chrome installed and your profile and application history are available immediately, no re-import or re-entry required.",
   },
 ]
 

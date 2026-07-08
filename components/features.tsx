@@ -25,7 +25,7 @@ const features = [
     ),
     title: "NHS-specific CV generation",
     description:
-      "Generates a tailored CV with a minimum of 3 STAR-format clinical examples per essential criterion — mapped directly from your profile to the job's person specification.",
+      "Generates a tailored CV with a minimum of 3 STAR-format clinical examples per essential criterion, mapped directly from your profile to the job's person specification.",
     badge: "AI-powered",
   },
   {
@@ -43,7 +43,7 @@ const features = [
     ),
     title: "AI-driven form autofill",
     description:
-      "No hardcoded field mappings. The extension reads each form's DOM and interprets field intent — adapting to every NHS Trust's different application structure automatically.",
+      "No hardcoded field mappings. The extension reads each form's DOM and interprets field intent, adapting to every NHS Trust's different application structure automatically.",
     badge: "Smart mapping",
   },
   {
@@ -52,7 +52,7 @@ const features = [
     ),
     title: "Application tracker",
     description:
-      "Every role you engage with is tracked automatically — from Saved through to Offer or Rejected. Update status with one click. Access documents across devices.",
+      "Every role you engage with is tracked automatically, from Saved through to Offer or Rejected. Update status with one click. Access documents across devices.",
     badge: "Built-in",
   },
   {
@@ -61,7 +61,7 @@ const features = [
     ),
     title: "Confidence-first generation",
     description:
-      "The assistant never guesses. When it cannot produce a confident STAR example at 95% threshold, it pauses and asks a targeted question — then continues with your input.",
+      "The assistant never guesses. When it cannot produce a confident STAR example at 95% threshold, it pauses and asks a targeted question, then continues with your input.",
     badge: "Honest AI",
   },
   {
@@ -70,7 +70,7 @@ const features = [
     ),
     title: "Contextual job chat",
     description:
-      "Ask the assistant anything about the role. It is pre-loaded with your profile and the full job context — so you never have to paste text or re-explain your background.",
+      "Ask the assistant anything about the role. It is pre-loaded with your profile and the full job context, so you never have to paste text or re-explain your background.",
     badge: "In context",
   },
 ]
@@ -85,7 +85,7 @@ export function Features() {
             Everything a UK nursing application requires. Nothing it does not.
           </h2>
           <p className="text-base text-muted-foreground leading-relaxed">
-            NurseJobPilot is purpose-built for NHS job applications — not a
+            NurseJobPilot is purpose-built for NHS job applications, not a
             generic AI CV tool retrofitted for healthcare.
           </p>
         </div>

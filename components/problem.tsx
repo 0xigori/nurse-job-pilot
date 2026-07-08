@@ -12,7 +12,7 @@ export function Problem() {
           </h2>
           <p className="text-base md:text-lg text-primary-foreground/70 leading-relaxed text-pretty">
             UK nurses applying for NHS roles face the same painful cycle on every
-            application — and most applicants experience significant burnout
+            application, and most applicants experience significant burnout
             before even getting to interview.
           </p>
         </div>
@@ -32,7 +32,7 @@ export function Problem() {
             {
               step: "03",
               title: "Re-enter everything manually",
-              body: "Open the application form. Re-type your personal details, NMC number, work history, education, and generated content — into a different form structure for every single NHS Trust.",
+              body: "Open the application form. Re-type your personal details, NMC number, work history, education, and generated content, into a different form structure for every single NHS Trust.",
             },
           ].map((item) => (
             <div

@@ -4,7 +4,7 @@ export function HowItWorks() {
       number: "1",
       title: "Build your profile once",
       description:
-        "Add your experience, education, certifications, and clinical skills — or import your existing CV in PDF or .docx. Your profile is stored securely and reused across every application.",
+        "Add your experience, education, certifications, and clinical skills, or import your existing CV in PDF or .docx. Your profile is stored securely and reused across every application.",
       tag: "One-time setup",
       tagColor: "bg-teal-subtle text-accent border-accent/20",
       details: [
@@ -18,7 +18,7 @@ export function HowItWorks() {
       number: "2",
       title: "Open any NHS job listing",
       description:
-        "NurseJobPilot detects supported job sites and shows a discreet indicator. Click it — the sidebar appears alongside the listing, showing you the role, AfC band, and every essential criterion.",
+        "NurseJobPilot detects supported job sites and shows a discreet indicator. Click it: the sidebar appears alongside the listing, showing you the role, AfC band, and every essential criterion.",
       tag: "Zero friction",
       tagColor: "bg-teal-subtle text-accent border-accent/20",
       details: [
@@ -39,18 +39,18 @@ export function HowItWorks() {
         "Minimum 3 STAR-format clinical examples per criterion",
         "NHS/HEE-standard language and AfC-appropriate framing",
         "Clarifying question if confidence drops below 95%",
-        "Download as PDF or .docx — ready to submit",
+        "Download as PDF or .docx, ready to submit",
       ],
     },
     {
       number: "4",
       title: "Autofill the application form",
       description:
-        "When you open the application form, NurseJobPilot reads the DOM and prefills every field. Review, make corrections, and submit yourself — the extension never submits on your behalf.",
+        "When you open the application form, NurseJobPilot reads the DOM and prefills every field. Review, make corrections, and submit yourself; the extension never submits on your behalf.",
       tag: "You stay in control",
       tagColor: "bg-teal-subtle text-accent border-accent/20",
       details: [
-        "AI interprets form fields — no hardcoded mappings",
+        "AI interprets form fields: no hardcoded mappings",
         "Teal border on prefilled fields, amber on uncertain",
         "Existing values never silently overwritten",
         "Application tracked automatically after submission",
@@ -64,7 +64,7 @@ export function HowItWorks() {
         {/* Section header */}
         <div className="max-w-2xl mb-16">
           <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-foreground text-balance leading-[1.2] mb-4">
-            From job listing to submitted application — in one workflow.
+            From job listing to submitted application. In one workflow.
           </h2>
           <p className="text-base text-muted-foreground leading-relaxed">
             NurseJobPilot lives in your browser. It activates at the moment of

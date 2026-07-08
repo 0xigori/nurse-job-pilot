@@ -11,7 +11,7 @@ export function BlogPostPage() {
   const post = slug ? getPostBySlug(slug) : undefined
 
   useDocumentMeta(
-    post ? post.seoTitle ?? `${post.title} — NurseJobPilot` : "Post not found — NurseJobPilot",
+    post ? post.seoTitle ?? `${post.title} | NurseJobPilot` : "Post not found | NurseJobPilot",
     post?.seoDescription ?? post?.excerpt
   )
 

@@ -20,7 +20,7 @@ export function Pricing() {
         "Includes cover letter & supporting statement",
         "No credit card required",
       ],
-      note: "Start with one application — no commitment.",
+      note: "Start with one application, no commitment.",
     },
     {
       name: "Pro",
@@ -37,10 +37,10 @@ export function Pricing() {
         "Application tracking with status history",
         "Document re-generation on demand",
         "Profile stored & synced across devices",
-        "Priority generation — under 60 seconds",
+        "Priority generation: under 60 seconds",
         "PDF and .docx download",
       ],
-      note: billing === "monthly" ? "Save vs. weekly. Cancel any time." : "Flexible — pause or cancel any time.",
+      note: billing === "monthly" ? "Save vs. weekly. Cancel any time." : "Flexible: pause or cancel any time.",
     },
   ]
 
@@ -54,7 +54,7 @@ export function Pricing() {
             Start free. Upgrade when you need more.
           </h2>
           <p className="text-base text-muted-foreground leading-relaxed">
-            One free application to experience the full workflow. Subscribe for unlimited applications — cancel any time.
+            One free application to experience the full workflow. Subscribe for unlimited applications, cancel any time.
           </p>
         </div>
 

@@ -19,7 +19,7 @@ const allTags = Object.values(allTagsMap)
 
 export function BlogPage() {
   useDocumentMeta(
-    "Blog — NurseJobPilot",
+    "Blog | NurseJobPilot",
     "Guidance on NHS applications, interviews, visas, and career progression for UK nurses."
   )
 
@@ -82,7 +82,7 @@ export function BlogPage() {
               Guidance for UK nursing applications
             </h1>
             <p className="text-base leading-relaxed text-muted-foreground">
-              Practical, NHS-specific advice on applications, interviews, visas, and career progression — written by our clinical and recruitment editors.
+              Practical, NHS-specific advice on applications, interviews, visas, and career progression, written by our clinical and recruitment editors.
             </p>
           </div>
 
