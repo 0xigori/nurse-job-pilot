@@ -3,13 +3,20 @@ import { Link } from "react-router-dom"
 export function Pagination({
   currentPage,
   totalPages,
+  searchParams,
 }: {
   currentPage: number
   totalPages: number
+  searchParams?: URLSearchParams
 }) {
   if (totalPages <= 1) return null
 
-  const pageHref = (page: number) => (page === 1 ? "/blog" : `/blog?page=${page}`)
+  const pageHref = (page: number) => {
+    const next = new URLSearchParams(searchParams)
+    page === 1 ? next.delete("page") : next.set("page", String(page))
+    const qs = next.toString()
+    return qs ? `/blog?${qs}` : "/blog"
+  }
 
   return (
     <nav className="mt-12 flex items-center justify-center gap-2" aria-label="Blog pagination">

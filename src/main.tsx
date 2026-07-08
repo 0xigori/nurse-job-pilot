@@ -9,10 +9,10 @@ import { BlogPage } from "./pages/blog-page"
 import { BlogPostPage } from "./pages/blog-post-page"
 
 function ScrollToTop() {
-  const { pathname } = useLocation()
+  const { pathname, search } = useLocation()
   useEffect(() => {
     window.scrollTo(0, 0)
-  }, [pathname])
+  }, [pathname, search])
   return null
 }
 
