@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom"
 import { useTheme } from "./theme-provider"
 import { Button } from "./ui/button"
 import { Input } from "./ui/input"
@@ -51,14 +52,21 @@ export function Footer() {
             <p className="text-xs font-semibold uppercase tracking-widest text-background/40 mb-4">Product</p>
             <ul className="space-y-2.5">
               {[
-                { label: "How it works", href: "#how-it-works" },
-                { label: "Features", href: "#features" },
-                { label: "Pricing", href: "#pricing" },
+                { label: "How it works", href: "/#how-it-works" },
+                { label: "Features", href: "/#features" },
+                { label: "Pricing", href: "/#pricing" },
+                { label: "Blog", href: "/blog" },
               ].map((link) => (
                 <li key={link.label}>
-                  <a href={link.href} className="text-sm text-background/60 hover:text-background transition-colors">
-                    {link.label}
-                  </a>
+                  {link.href.startsWith("/#") ? (
+                    <a href={link.href} className="text-sm text-background/60 hover:text-background transition-colors">
+                      {link.label}
+                    </a>
+                  ) : (
+                    <Link to={link.href} className="text-sm text-background/60 hover:text-background transition-colors">
+                      {link.label}
+                    </Link>
+                  )}
                 </li>
               ))}
             </ul>
@@ -69,8 +77,8 @@ export function Footer() {
             <p className="text-xs font-semibold uppercase tracking-widest text-background/40 mb-4">Support</p>
             <ul className="space-y-2.5">
               {[
-                { label: "FAQ", href: "#faq" },
-                { label: "Supported job sites", href: "#job-sites" },
+                { label: "FAQ", href: "/#faq" },
+                { label: "Supported job sites", href: "/#job-sites" },
                 { label: "Contact us", href: "mailto:hello@nursejobpilot.com" },
               ].map((link) => (
                 <li key={link.label}>

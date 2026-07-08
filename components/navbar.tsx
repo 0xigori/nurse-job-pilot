@@ -1,12 +1,14 @@
 import { useState, useEffect } from "react"
+import { Link } from "react-router-dom"
 import { useTheme } from "@/components/theme-provider"
 import { DesktopButtonMode, MobileButtonMode } from "./theme-mode"
 
 const NAV_LINKS = [
-  { label: "How it works", href: "#how-it-works" },
-  { label: "Features",     href: "#features" },
-  { label: "Job sites",    href: "#job-sites" },
-  { label: "FAQ",          href: "#faq" },
+  { label: "How it works", href: "/#how-it-works" },
+  { label: "Features",     href: "/#features" },
+  { label: "Job sites",    href: "/#job-sites" },
+  { label: "Blog",         href: "/blog" },
+  { label: "FAQ",          href: "/#faq" },
 ]
 
 export function Navbar() {
@@ -29,17 +31,23 @@ export function Navbar() {
     >
       <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
         {/* Logo */}
-        <a href="/" className="flex items-center gap-2.5 group">
+        <Link to="/" className="flex items-center gap-2.5 group">
           <img src={theme === "dark" ? "/logo-light.png" : "/logo-dark.png"} alt="NurseJobPilot Logo" className="h-12" />
-        </a>
+        </Link>
 
         {/* Desktop nav */}
         <nav className="hidden md:flex items-center gap-1" aria-label="Main navigation">
-          {NAV_LINKS.map(({ label, href }) => (
-            <a key={href} href={href} className="px-3 py-2 text-muted-foreground hover:text-foreground transition-colors rounded-md hover:bg-muted">
-              {label}
-            </a>
-          ))}
+          {NAV_LINKS.map(({ label, href }) =>
+            href.startsWith("/#") ? (
+              <a key={href} href={href} className="px-3 py-2 text-muted-foreground hover:text-foreground transition-colors rounded-md hover:bg-muted">
+                {label}
+              </a>
+            ) : (
+              <Link key={href} to={href} className="px-3 py-2 text-muted-foreground hover:text-foreground transition-colors rounded-md hover:bg-muted">
+                {label}
+              </Link>
+            )
+          )}
         </nav>
 
         {/* CTA */}
@@ -113,16 +121,27 @@ export function Navbar() {
 
         {/* Nav links */}
         <nav className="flex flex-col gap-1 p-4 flex-1" aria-label="Mobile navigation">
-          {NAV_LINKS.map(({ label, href }) => (
-            <a
-              key={href}
-              href={href}
-              onClick={() => setMenuOpen(false)}
-              className="px-3 py-3 text-sm text-muted-foreground hover:text-foreground rounded-md hover:bg-muted transition-colors"
-            >
-              {label}
-            </a>
-          ))}
+          {NAV_LINKS.map(({ label, href }) =>
+            href.startsWith("/#") ? (
+              <a
+                key={href}
+                href={href}
+                onClick={() => setMenuOpen(false)}
+                className="px-3 py-3 text-sm text-muted-foreground hover:text-foreground rounded-md hover:bg-muted transition-colors"
+              >
+                {label}
+              </a>
+            ) : (
+              <Link
+                key={href}
+                to={href}
+                onClick={() => setMenuOpen(false)}
+                className="px-3 py-3 text-sm text-muted-foreground hover:text-foreground rounded-md hover:bg-muted transition-colors"
+              >
+                {label}
+              </Link>
+            )
+          )}
         </nav>
 
         {/* CTA */}

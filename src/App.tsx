@@ -1,5 +1,3 @@
-import { Analytics } from "@vercel/analytics/react"
-import { ThemeProvider } from "@/components/theme-provider"
 import { Navbar } from "@/components/navbar"
 import { Hero } from "@/components/hero"
 import { Problem } from "@/components/problem"
@@ -11,19 +9,16 @@ import { JobSites } from "@/components/job-sites"
 
 export default function App() {
   return (
-    <ThemeProvider>
-      <main>
-        <Navbar />
-        <Hero />
-        <Problem />
-        <HowItWorks />
-        <Features />
-        <JobSites />
-        <FAQ />
-        <CTA />
-        <Footer />
-      </main>
-      {import.meta.env.PROD && <Analytics />}
-    </ThemeProvider>
+    <main>
+      <Navbar />
+      <Hero />
+      <Problem />
+      <HowItWorks />
+      <Features />
+      <JobSites />
+      <FAQ />
+      <CTA />
+      <Footer />
+    </main>
   )
 }
