@@ -13,7 +13,7 @@ export default function App() {
     "NurseJobPilot: NHS Applications, Done in Under 45 Minutes",
     "The Browser extension that turns your nursing profile into a tailored NHS CV, supporting statement, and form autofill, purpose-built for UK nursing job applications.",
     {
-      image: `${import.meta.env.VITE_WEB_URL}/extension-preview.png`,
+      image: `${import.meta.env.VITE_WEB_URL}/preview-image.png`,
       url: import.meta.env.VITE_WEB_URL
     }
   )

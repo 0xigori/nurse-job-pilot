@@ -17,7 +17,7 @@ export function BlogPage() {
   useDocumentMeta(
     "Blog | NurseJobPilot",
     "Guidance on NHS applications, interviews, visas, and career progression for UK nurses.",
-    { image: `${import.meta.env.VITE_WEB_URL}/extension-preview.png`, url: `${import.meta.env.VITE_WEB_URL}/blog` }
+    { image: `${import.meta.env.VITE_WEB_URL}/preview-image.png`, url: `${import.meta.env.VITE_WEB_URL}/blog` }
   )
 
   const [searchParams, setSearchParams] = useSearchParams()
