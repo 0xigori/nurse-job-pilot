@@ -3,10 +3,14 @@ export function CoverImage({
   alt = "",
   className = "",
 }: {
-  image: string
+  image?: string
   alt?: string
   className?: string
 }) {
+  if (!image) {
+    return <div className={`rounded-lb-lg bg-muted ${className}`} aria-hidden="true" />
+  }
+
   return (
     <img
       src={image}

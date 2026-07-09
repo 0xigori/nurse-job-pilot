@@ -1,19 +1,67 @@
+import { useEffect, useState } from "react"
 import { Link, useParams } from "react-router-dom"
 import { Navbar } from "@/components/navbar"
 import { Footer } from "@/components/footer"
 import { CoverImage } from "@/components/blog/cover-image"
 import { PostCard } from "@/components/blog/post-card"
-import { getPostBySlug, getListPosts, formatPublishedDate } from "@/src/data/blog"
+import { RichText } from "@/components/blog/rich-text"
+import { getPostBySlug, getAllPosts, formatPublishedDate, type BlogPost } from "@/src/data/blog"
 import { useDocumentMeta } from "@/lib/use-document-meta"
 
 export function BlogPostPage() {
   const { slug } = useParams<{ slug: string }>()
-  const post = slug ? getPostBySlug(slug) : undefined
+
+  const [post, setPost] = useState<BlogPost | null | undefined>(undefined)
+  const [related, setRelated] = useState<BlogPost[]>([])
+
+  useEffect(() => {
+    if (!slug) {
+      setPost(null)
+      return
+    }
+    let cancelled = false
+    setPost(undefined)
+    getPostBySlug(slug)
+      .then(async (found) => {
+        if (cancelled) return
+        setPost(found ?? null)
+        if (!found) return
+        const allPosts = await getAllPosts()
+        if (cancelled) return
+        setRelated(
+          allPosts
+            .filter((p) => p.slug !== found.slug)
+            .filter((p) => p.categories.some((c) => found.categories.some((pc) => pc.slug === c.slug)))
+            .slice(0, 3)
+        )
+      })
+      .catch(() => {
+        if (!cancelled) setPost(null)
+      })
+    return () => {
+      cancelled = true
+    }
+  }, [slug])
 
   useDocumentMeta(
     post ? post.seoTitle ?? `${post.title} | NurseJobPilot` : "Post not found | NurseJobPilot",
     post?.seoDescription ?? post?.excerpt
   )
+
+  if (post === undefined) {
+    return (
+      <main>
+        <Navbar />
+        <section className="pt-32 pb-28 md:pt-40">
+          <div className="mx-auto max-w-3xl px-6">
+            <div className="h-8 w-2/3 animate-pulse rounded bg-muted/40" />
+            <div className="mt-10 aspect-16/9 w-full animate-pulse rounded-lg bg-muted/40" />
+          </div>
+        </section>
+        <Footer />
+      </main>
+    )
+  }
 
   if (!post) {
     return (
@@ -38,13 +86,6 @@ export function BlogPostPage() {
     )
   }
 
-  const related = getListPosts()
-    .filter((p) => p.slug !== post.slug)
-    .filter((p) => p.categories.some((c) => post.categories.some((pc) => pc.slug === c.slug)))
-    .slice(0, 3)
-
-  const paragraphs = post.body.split("\n\n")
-
   return (
     <main>
       <Navbar />
@@ -60,16 +101,18 @@ export function BlogPostPage() {
             Back to blog
           </Link>
 
-          <div className="mb-6 flex flex-wrap items-center gap-2">
-            {post.categories.map((category) => (
-              <span
-                key={category.slug}
-                className="rounded-full border border-accent/15 bg-teal-subtle px-2 py-0.5 text-[11px] font-semibold text-accent"
-              >
-                {category.name}
-              </span>
-            ))}
-          </div>
+          {post.categories.length > 0 && (
+            <div className="mb-6 flex flex-wrap items-center gap-2">
+              {post.categories.map((category) => (
+                <span
+                  key={category.slug}
+                  className="rounded-full border border-accent/15 bg-teal-subtle px-2 py-0.5 text-[11px] font-semibold text-accent"
+                >
+                  {category.name}
+                </span>
+              ))}
+            </div>
+          )}
 
           <h1 className="mb-5 text-3xl font-bold leading-[1.15] tracking-tight text-foreground text-balance md:text-4xl">
             {post.title}
@@ -88,15 +131,9 @@ export function BlogPostPage() {
             </div>
           </div>
 
-          <CoverImage image={post.image} alt={post.title} className="mb-10 aspect-16/9 w-full" />
+          {post.image && <CoverImage image={post.image} alt={post.title} className="mb-10 aspect-16/9 w-full" />}
 
-          <div className="space-y-5">
-            {paragraphs.map((paragraph, i) => (
-              <p key={i} className="text-base leading-relaxed text-foreground/90">
-                {paragraph}
-              </p>
-            ))}
-          </div>
+          {post.body && <RichText body={post.body} />}
 
           {post.tags.length > 0 && (
             <div className="mt-10 flex flex-wrap items-center gap-2 border-t border-border pt-8">
@@ -111,15 +148,17 @@ export function BlogPostPage() {
             </div>
           )}
 
-          <div className="mt-10 flex items-start gap-4 rounded-lg border border-border bg-card p-6">
-            <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-navy-subtle text-sm font-semibold text-navy">
-              {post.author.initials}
-            </span>
-            <div>
-              <p className="mb-1 font-semibold text-foreground">{post.author.name}</p>
-              <p className="text-sm leading-relaxed text-muted-foreground">{post.author.bio}</p>
+          {post.author.bio && (
+            <div className="mt-10 flex items-start gap-4 rounded-lg border border-border bg-card p-6">
+              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-navy-subtle text-sm font-semibold text-navy">
+                {post.author.initials}
+              </span>
+              <div>
+                <p className="mb-1 font-semibold text-foreground">{post.author.name}</p>
+                <p className="text-sm leading-relaxed text-muted-foreground">{post.author.bio}</p>
+              </div>
             </div>
-          </div>
+          )}
         </div>
       </article>
 
