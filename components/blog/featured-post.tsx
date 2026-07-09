@@ -7,7 +7,7 @@ export function FeaturedPost({ post }: { post: BlogPost }) {
   return (
     <Link
       to={`/blog/${post.slug}`}
-      className="group grid gap-6 overflow-hidden rounded-xl border border-border bg-card p-3 transition-all duration-200 hover:border-accent/30 hover:shadow-sm md:grid-cols-2 md:gap-8 md:p-4"
+      className="group grid gap-6 overflow-hidden rounded-xl border border-border bg-card transition-all duration-200 hover:border-accent/30 hover:shadow-sm md:grid-cols-2 md:gap-8"
     >
       <CoverImage image={post.image} alt={post.title} className="aspect-16/10 w-full md:aspect-auto md:h-full" />
       <div className="flex flex-col justify-center py-2 pr-2 md:py-6">

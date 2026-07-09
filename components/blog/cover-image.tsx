@@ -11,7 +11,7 @@ export function CoverImage({
     <img
       src={image}
       alt={alt}
-      className={`rounded-lg object-cover ${className}`}
+      className={`rounded-lb-lg object-cover ${className}`}
     />
   )
 }
