@@ -4,7 +4,11 @@ import { Footer } from "@/components/footer"
 import { useDocumentMeta } from "@/lib/use-document-meta"
 
 export function NotFoundPage() {
-  useDocumentMeta("Page not found | NurseJobPilot", "The page you're looking for doesn't exist or may have been moved.")
+  useDocumentMeta(
+    "Page not found | NurseJobPilot",
+    "The page you're looking for doesn't exist or may have been moved.",
+    { noindex: true }
+  )
 
   return (
     <main className="flex min-h-screen flex-col">

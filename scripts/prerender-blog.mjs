@@ -62,10 +62,16 @@ function replaceAttr(html, matchAttr, matchValue, newContent) {
   return html.replace(re, `$1${escapeHtml(newContent)}$2`)
 }
 
+function replaceLinkHref(html, rel, newHref) {
+  const re = new RegExp(`(<link\\s+rel="${rel}"\\s+href=")[^"]*(")`)
+  return html.replace(re, `$1${escapeHtml(newHref)}$2`)
+}
+
 function renderPage({ title, description, image, url }) {
   let html = template
   html = html.replace(/<title>.*?<\/title>/s, `<title>${escapeHtml(title)}</title>`)
   html = replaceAttr(html, "name", "description", description)
+  html = replaceLinkHref(html, "canonical", url)
   html = replaceAttr(html, "property", "og:type", "article")
   html = replaceAttr(html, "property", "og:url", url)
   html = replaceAttr(html, "property", "og:title", title)

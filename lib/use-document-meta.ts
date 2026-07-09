@@ -4,15 +4,26 @@ interface DocumentMetaOptions {
   image?: string
   url?: string
   type?: "website" | "article"
+  noindex?: boolean
 }
 
-interface TrackedTag {
+interface TrackedMetaTag {
+  kind: "meta"
   el: HTMLMetaElement
   previousContent?: string
   created: boolean
 }
 
-function upsertMetaTag(attr: "name" | "property", key: string, content: string): TrackedTag {
+interface TrackedLinkTag {
+  kind: "link"
+  el: HTMLLinkElement
+  previousHref?: string
+  created: boolean
+}
+
+type TrackedTag = TrackedMetaTag | TrackedLinkTag
+
+function upsertMetaTag(attr: "name" | "property", key: string, content: string): TrackedMetaTag {
   const selector = `meta[${attr}="${key}"]`
   let el = document.querySelector<HTMLMetaElement>(selector)
   const created = !el
@@ -25,11 +36,27 @@ function upsertMetaTag(attr: "name" | "property", key: string, content: string):
   }
   el.setAttribute("content", content)
 
-  return { el, previousContent, created }
+  return { kind: "meta", el, previousContent, created }
+}
+
+function upsertLinkTag(rel: string, href: string): TrackedLinkTag {
+  const selector = `link[rel="${rel}"]`
+  let el = document.querySelector<HTMLLinkElement>(selector)
+  const created = !el
+  const previousHref = el?.getAttribute("href") ?? undefined
+
+  if (!el) {
+    el = document.createElement("link")
+    el.setAttribute("rel", rel)
+    document.head.appendChild(el)
+  }
+  el.setAttribute("href", href)
+
+  return { kind: "link", el, previousHref, created }
 }
 
 export function useDocumentMeta(title: string, description?: string, options: DocumentMetaOptions = {}) {
-  const { image, url, type = "website" } = options
+  const { image, url, type = "website", noindex = false } = options
 
   useEffect(() => {
     const previousTitle = document.title
@@ -38,6 +65,7 @@ export function useDocumentMeta(title: string, description?: string, options: Do
     const tags: TrackedTag[] = []
     tags.push(upsertMetaTag("property", "og:title", title))
     tags.push(upsertMetaTag("name", "twitter:title", title))
+    tags.push(upsertMetaTag("name", "robots", noindex ? "noindex, follow" : "index, follow"))
 
     if (description) {
       tags.push(upsertMetaTag("name", "description", description))
@@ -49,6 +77,7 @@ export function useDocumentMeta(title: string, description?: string, options: Do
 
     if (url) {
       tags.push(upsertMetaTag("property", "og:url", url))
+      tags.push(upsertLinkTag("canonical", url))
     }
 
     if (image) {
@@ -59,13 +88,19 @@ export function useDocumentMeta(title: string, description?: string, options: Do
 
     return () => {
       document.title = previousTitle
-      for (const { el, previousContent, created } of tags) {
-        if (created) {
-          el.remove()
-        } else if (previousContent !== undefined) {
-          el.setAttribute("content", previousContent)
+      for (const tag of tags) {
+        if (tag.kind === "meta") {
+          if (tag.created) {
+            tag.el.remove()
+          } else if (tag.previousContent !== undefined) {
+            tag.el.setAttribute("content", tag.previousContent)
+          }
+        } else if (tag.created) {
+          tag.el.remove()
+        } else if (tag.previousHref !== undefined) {
+          tag.el.setAttribute("href", tag.previousHref)
         }
       }
     }
-  }, [title, description, image, url, type])
+  }, [title, description, image, url, type, noindex])
 }
