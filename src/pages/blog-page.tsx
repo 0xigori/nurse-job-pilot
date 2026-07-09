@@ -16,7 +16,8 @@ const ALL_CATEGORIES = "all"
 export function BlogPage() {
   useDocumentMeta(
     "Blog | NurseJobPilot",
-    "Guidance on NHS applications, interviews, visas, and career progression for UK nurses."
+    "Guidance on NHS applications, interviews, visas, and career progression for UK nurses.",
+    { image: `${import.meta.env.VITE_WEB_URL}/extension-preview.png`, url: `${import.meta.env.VITE_WEB_URL}/blog` }
   )
 
   const [searchParams, setSearchParams] = useSearchParams()
@@ -87,9 +88,9 @@ export function BlogPage() {
   const showFeatured = !hasFilters && currentPage === 1 && !!featuredPost
 
   return (
-    <main>
+    <main className="flex min-h-screen flex-col">
       <Navbar />
-      <section className="pt-32 pb-20 md:pt-40 md:pb-28">
+      <section className="flex-1 pt-32 pb-20 md:pt-40 md:pb-28">
         <div className="mx-auto max-w-6xl px-6">
           <div className="mb-12 max-w-2xl">
             <h1 className="mb-4 text-3xl font-bold leading-[1.2] tracking-tight text-foreground text-balance md:text-4xl">

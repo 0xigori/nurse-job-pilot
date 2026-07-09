@@ -6,18 +6,30 @@ import { Features } from "@/components/features"
 import { FAQ } from "@/components/faq"
 import { CTA, Footer } from "@/components/footer"
 import { JobSites } from "@/components/job-sites"
+import { useDocumentMeta } from "@/lib/use-document-meta"
 
 export default function App() {
+  useDocumentMeta(
+    "NurseJobPilot: NHS Applications, Done in Under 45 Minutes",
+    "The Browser extension that turns your nursing profile into a tailored NHS CV, supporting statement, and form autofill, purpose-built for UK nursing job applications.",
+    {
+      image: `${import.meta.env.VITE_WEB_URL}/extension-preview.png`,
+      url: import.meta.env.VITE_WEB_URL
+    }
+  )
+
   return (
-    <main>
+    <main className="flex min-h-screen flex-col">
       <Navbar />
-      <Hero />
-      <Problem />
-      <HowItWorks />
-      <Features />
-      <JobSites />
-      <FAQ />
-      <CTA />
+      <div className="flex-1">
+        <Hero />
+        <Problem />
+        <HowItWorks />
+        <Features />
+        <JobSites />
+        <FAQ />
+        <CTA />
+      </div>
       <Footer />
     </main>
   )

@@ -6,6 +6,7 @@ import App from "./App"
 import { ThemeProvider } from "@/components/theme-provider"
 import { BlogPage } from "./pages/blog-page"
 import { BlogPostPage } from "./pages/blog-post-page"
+import { NotFoundPage } from "./pages/not-found-page"
 
 function ScrollToTop() {
   const { pathname, search } = useLocation()
@@ -24,6 +25,7 @@ createRoot(document.getElementById("root")!).render(
           <Route path="/" element={<App />} />
           <Route path="/blog" element={<BlogPage />} />
           <Route path="/blog/:slug" element={<BlogPostPage />} />
+          <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </BrowserRouter>
     </ThemeProvider>

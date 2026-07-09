@@ -53,9 +53,9 @@ export function BlogPostPage() {
 
   if (post === undefined) {
     return (
-      <main>
+      <main className="flex min-h-screen flex-col">
         <Navbar />
-        <section className="pt-32 pb-28 md:pt-40">
+        <section className="flex-1 pt-32 pb-28 md:pt-40">
           <div className="mx-auto max-w-3xl px-6">
             <div className="h-8 w-2/3 animate-pulse rounded bg-muted/40" />
             <div className="mt-10 aspect-video w-full animate-pulse rounded-lg bg-muted/40" />
@@ -68,9 +68,9 @@ export function BlogPostPage() {
 
   if (!post) {
     return (
-      <main>
+      <main className="flex min-h-screen flex-col">
         <Navbar />
-        <section className="pt-32 pb-28 md:pt-40">
+        <section className="flex flex-1 items-center pt-32 pb-28 md:pt-40">
           <div className="mx-auto max-w-2xl px-6 text-center">
             <h1 className="mb-4 text-3xl font-bold tracking-tight text-foreground">Post not found</h1>
             <p className="mb-8 text-muted-foreground">
@@ -90,9 +90,9 @@ export function BlogPostPage() {
   }
 
   return (
-    <main>
+    <main className="flex min-h-screen flex-col">
       <Navbar />
-      <article className="pt-32 pb-20 md:pt-40 md:pb-28">
+      <article className="flex-1 pt-32 pb-20 md:pt-40 md:pb-28">
         <div className="mx-auto max-w-3xl px-6">
           <Link
             to="/blog"
