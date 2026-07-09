@@ -1,6 +1,5 @@
 import { StrictMode, useEffect } from "react"
 import { createRoot } from "react-dom/client"
-import { Analytics } from "@vercel/analytics/react"
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom"
 import "./index.css"
 import App from "./App"
@@ -27,7 +26,6 @@ createRoot(document.getElementById("root")!).render(
           <Route path="/blog/:slug" element={<BlogPostPage />} />
         </Routes>
       </BrowserRouter>
-      {import.meta.env.PROD && <Analytics />}
     </ThemeProvider>
   </StrictMode>
 )

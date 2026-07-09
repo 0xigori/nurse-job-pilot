@@ -9,7 +9,7 @@ export function PostCard({ post }: { post: BlogPost }) {
       to={`/blog/${post.slug}`}
       className="group flex flex-col overflow-hidden rounded-lg border border-border bg-card transition-all duration-200 hover:border-accent/30 hover:shadow-sm"
     >
-      <CoverImage image={post.image} alt={post.title} className="aspect-16/9 w-full" />
+      <CoverImage image={post.thumbnail} alt={post.title} className="aspect-16/9 w-full" />
       <div className="flex flex-1 flex-col p-5">
         <div className="mb-3 flex flex-wrap items-center gap-2">
           {post.categories.slice(0, 2).map((category) => (

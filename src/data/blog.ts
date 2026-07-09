@@ -29,8 +29,12 @@ export interface BlogPost {
   slug: string
   excerpt: string
   body?: Document
-  /** Resolved, CDN-optimized image URL. */
+  /** Full-size cover image, for the post detail page. */
   image?: string
+  /** Smaller cropped image, for post list/card thumbnails. */
+  thumbnail?: string
+  /** 1200x630 image sized for Open Graph / Twitter card SEO metadata. */
+  ogImage?: string
   author: Author
   categories: Category[]
   tags: Tag[]

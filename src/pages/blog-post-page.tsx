@@ -45,7 +45,10 @@ export function BlogPostPage() {
 
   useDocumentMeta(
     post ? post.seoTitle ?? `${post.title} | NurseJobPilot` : "Post not found | NurseJobPilot",
-    post?.seoDescription ?? post?.excerpt
+    post?.seoDescription ?? post?.excerpt,
+    post
+      ? { image: post.ogImage, url: `${import.meta.env.VITE_WEB_URL}/blog/${post.slug}`, type: "article" }
+      : undefined
   )
 
   if (post === undefined) {
@@ -55,7 +58,7 @@ export function BlogPostPage() {
         <section className="pt-32 pb-28 md:pt-40">
           <div className="mx-auto max-w-3xl px-6">
             <div className="h-8 w-2/3 animate-pulse rounded bg-muted/40" />
-            <div className="mt-10 aspect-16/9 w-full animate-pulse rounded-lg bg-muted/40" />
+            <div className="mt-10 aspect-video w-full animate-pulse rounded-lg bg-muted/40" />
           </div>
         </section>
         <Footer />
@@ -131,7 +134,7 @@ export function BlogPostPage() {
             </div>
           </div>
 
-          {post.image && <CoverImage image={post.image} alt={post.title} className="mb-10 aspect-16/9 w-full" />}
+          {post.image && <CoverImage image={post.image} alt={post.title} className="mb-10 aspect-video w-full" />}
 
           {post.body && <RichText body={post.body} />}
 

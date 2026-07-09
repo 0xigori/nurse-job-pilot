@@ -9,11 +9,24 @@ function isResolvedEntry(value: unknown): value is ResolvedEntry<AuthorSkeleton 
   return !!value && typeof value === "object" && "fields" in (value as Record<string, unknown>)
 }
 
-export function resolveAssetUrl(asset: Asset<undefined> | undefined, params = "fm=webp&q=75"): string | undefined {
+interface ImageParams {
+  width?: number
+  height?: number
+  quality?: number
+  fit?: "fill" | "scale" | "crop" | "pad" | "thumb"
+}
+
+export function resolveAssetUrl(asset: Asset<undefined> | undefined, params: ImageParams = {}): string | undefined {
   const url = asset?.fields?.file?.url
   if (!url) return undefined
   const httpsUrl = url.startsWith("//") ? `https:${url}` : url
-  return params ? `${httpsUrl}?${params}` : httpsUrl
+
+  const { width, height, quality = 75, fit } = params
+  const query = new URLSearchParams({ fm: "webp", q: String(quality) })
+  if (width) query.set("w", String(width))
+  if (height) query.set("h", String(height))
+  if (fit) query.set("fit", fit)
+  return `${httpsUrl}?${query.toString()}`
 }
 
 export function getInitials(name: string): string {
@@ -60,12 +73,16 @@ export function mapBlogPost(entry: ResolvedEntry<BlogPostSkeleton>): BlogPost {
   const { title, slug, image, excerpt, body, author, categories, tags, publishedDate, seoTitle, seoDescription } =
     entry.fields
 
+  const imageAsset = image && "fields" in image ? image : undefined
+
   return {
     title: title ?? "",
     slug: slug ?? "",
     excerpt: excerpt ?? "",
     body: (body ?? undefined) as Document | undefined,
-    image: resolveAssetUrl(image && "fields" in image ? image : undefined),
+    image: resolveAssetUrl(imageAsset, { width: 1600 }),
+    thumbnail: resolveAssetUrl(imageAsset, { width: 768 }),
+    ogImage: resolveAssetUrl(imageAsset, { width: 1200, height: 630, fit: "fill", quality: 80 }),
     author: isResolvedEntry(author) ? mapAuthor(author as ResolvedEntry<AuthorSkeleton>) : FALLBACK_AUTHOR,
     categories: (categories ?? [])
       .filter((c): c is ResolvedEntry<CategorySkeleton> => isResolvedEntry(c))
