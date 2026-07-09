@@ -45,7 +45,8 @@ function resolveOgImage(asset) {
   const url = asset?.fields?.file?.url
   if (!url) return `${webUrl}/preview-image.png`
   const httpsUrl = url.startsWith("//") ? `https:${url}` : url
-  const query = new URLSearchParams({ fm: "webp", q: "80", w: "1200", h: "630", fit: "fill" })
+  // jpg, not webp: WhatsApp/Facebook's link-preview crawler doesn't reliably render webp og:images.
+  const query = new URLSearchParams({ fm: "jpg", q: "80", w: "1200", h: "630", fit: "fill" })
   return `${httpsUrl}?${query.toString()}`
 }
 

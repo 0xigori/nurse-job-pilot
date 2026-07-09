@@ -14,6 +14,9 @@ interface ImageParams {
   height?: number
   quality?: number
   fit?: "fill" | "scale" | "crop" | "pad" | "thumb"
+  /** Image format. Defaults to webp; use "jpg" for og:image since WhatsApp/Facebook's
+   *  crawlers don't reliably render webp link previews. */
+  format?: "webp" | "jpg" | "png"
 }
 
 export function resolveAssetUrl(asset: Asset<undefined> | undefined, params: ImageParams = {}): string | undefined {
@@ -21,8 +24,8 @@ export function resolveAssetUrl(asset: Asset<undefined> | undefined, params: Ima
   if (!url) return undefined
   const httpsUrl = url.startsWith("//") ? `https:${url}` : url
 
-  const { width, height, quality = 75, fit } = params
-  const query = new URLSearchParams({ fm: "webp", q: String(quality) })
+  const { width, height, quality = 75, fit, format = "webp" } = params
+  const query = new URLSearchParams({ fm: format, q: String(quality) })
   if (width) query.set("w", String(width))
   if (height) query.set("h", String(height))
   if (fit) query.set("fit", fit)
@@ -82,7 +85,7 @@ export function mapBlogPost(entry: ResolvedEntry<BlogPostSkeleton>): BlogPost {
     body: (body ?? undefined) as Document | undefined,
     image: resolveAssetUrl(imageAsset, { width: 1600 }),
     thumbnail: resolveAssetUrl(imageAsset, { width: 768 }),
-    ogImage: resolveAssetUrl(imageAsset, { width: 1200, height: 630, fit: "fill", quality: 80 }),
+    ogImage: resolveAssetUrl(imageAsset, { width: 1200, height: 630, fit: "fill", quality: 80, format: "jpg" }),
     author: isResolvedEntry(author) ? mapAuthor(author as ResolvedEntry<AuthorSkeleton>) : FALLBACK_AUTHOR,
     categories: (categories ?? [])
       .filter((c): c is ResolvedEntry<CategorySkeleton> => isResolvedEntry(c))
