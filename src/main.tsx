@@ -8,6 +8,7 @@ import { BlogPage } from "./pages/blog-page"
 import { BlogPostPage } from "./pages/blog-post-page"
 import { NotFoundPage } from "./pages/not-found-page"
 import { VerifyEmailPage } from "./pages/verify-email-page"
+import { ResetPasswordPage } from "./pages/reset-password-page"
 
 function ScrollToTop() {
   const { pathname, search } = useLocation()
@@ -27,6 +28,7 @@ createRoot(document.getElementById("root")!).render(
           <Route path="/blog" element={<BlogPage />} />
           <Route path="/blog/:slug" element={<BlogPostPage />} />
           <Route path="/verify-email/:token" element={<VerifyEmailPage />} />
+          <Route path="/reset-password/:token" element={<ResetPasswordPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </BrowserRouter>
