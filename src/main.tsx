@@ -9,6 +9,7 @@ import { BlogPostPage } from "./pages/blog-post-page"
 import { NotFoundPage } from "./pages/not-found-page"
 import { VerifyEmailPage } from "./pages/verify-email-page"
 import { ResetPasswordPage } from "./pages/reset-password-page"
+import { pushPageView } from "@/lib/analytics"
 
 function ScrollToTop() {
   const { pathname, search } = useLocation()
@@ -18,11 +19,20 @@ function ScrollToTop() {
   return null
 }
 
+function GtmPageView() {
+  const { pathname, search } = useLocation()
+  useEffect(() => {
+    pushPageView(pathname + search, document.title)
+  }, [pathname, search])
+  return null
+}
+
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <ThemeProvider>
       <BrowserRouter>
         <ScrollToTop />
+        <GtmPageView />
         <Routes>
           <Route path="/" element={<App />} />
           <Route path="/blog" element={<BlogPage />} />
