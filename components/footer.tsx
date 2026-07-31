@@ -127,8 +127,8 @@ export function Footer() {
             <p className="text-xs font-semibold uppercase tracking-widest text-background/40 mb-4">Support</p>
             <ul className="space-y-2.5">
               {[
+                { label: "Demo", href: "/#demo" },
                 { label: "FAQ", href: "/#faq" },
-                { label: "Supported job sites", href: "/#job-sites" },
                 { label: "Contact us", href: "mailto:hello@nursejobpilot.com" },
               ].map((link) => (
                 <li key={link.label}>

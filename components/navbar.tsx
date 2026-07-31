@@ -4,11 +4,11 @@ import { useTheme } from "@/components/theme-provider"
 import { DesktopButtonMode, MobileButtonMode } from "./theme-mode"
 
 const NAV_LINKS = [
+  { label: "Demo", href: "/#demo" },
   { label: "How it works", href: "/#how-it-works" },
-  { label: "Features",     href: "/#features" },
-  { label: "Job sites",    href: "/#job-sites" },
-  { label: "Blog",         href: "/blog" },
-  { label: "FAQ",          href: "/#faq" },
+  { label: "Features", href: "/#features" },
+  { label: "Blog", href: "/blog" },
+  { label: "FAQ", href: "/#faq" },
 ]
 
 export function Navbar() {
@@ -93,16 +93,14 @@ export function Navbar() {
       <div
         aria-hidden="true"
         onClick={() => setMenuOpen(false)}
-        className={`md:hidden fixed inset-0 z-40 bg-black/30 backdrop-blur-sm transition-opacity duration-300 ${
-          menuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
-        }`}
+        className={`md:hidden fixed inset-0 z-40 bg-black/30 backdrop-blur-sm transition-opacity duration-300 ${menuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
+          }`}
       />
 
       {/* Side drawer */}
       <div
-        className={`md:hidden fixed top-0 right-0 z-50 h-dvh w-72 bg-background shadow-2xl flex flex-col transition-transform duration-300 ease-in-out ${
-          menuOpen ? "translate-x-0" : "translate-x-full"
-        }`}
+        className={`md:hidden fixed top-0 right-0 z-50 h-dvh w-72 bg-background shadow-2xl flex flex-col transition-transform duration-300 ease-in-out ${menuOpen ? "translate-x-0" : "translate-x-full"
+          }`}
       >
         {/* Drawer header */}
         <div className="h-16 flex items-center justify-between px-5 border-b border-border shrink-0">
