@@ -3,8 +3,7 @@
 import { useState } from "react";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
-
-const SHEETS_URL = "https://script.google.com/macros/s/AKfycbwaVJx6tSrap0iEJSZhLiZdiaP40mcQboyUlnkQ3Y_Bsn6veml7aY5sOorcjJ00uW6q/exec";
+import { getRecaptchaToken } from "@/lib/recaptcha";
 
 interface WaitListProps {
   background?: 'light' | 'dark';
@@ -30,10 +29,13 @@ export function WaitListForm({ background = 'light', buttonText = "Join the wait
     if (!email) return;
     setStatus("loading");
     try {
-      await fetch(SHEETS_URL, {
+      const recaptchaToken = await getRecaptchaToken("waitlist_submit");
+      const res = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/v1/waitlist`, {
         method: "POST",
-        body: JSON.stringify({ email }),
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, recaptchaToken }),
       });
+      if (!res.ok) throw new Error("Waitlist submission failed");
       setStatus("success");
       setEmail("");
     } catch {

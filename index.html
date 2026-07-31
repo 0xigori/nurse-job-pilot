@@ -6,6 +6,13 @@
     <meta name="color-scheme" content="light dark" />
     <meta name="theme-color" content="#1B3558" />
 
+    <!-- Google Consent Mode default — must run before GTM loads -->
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      window.gtag = window.gtag || function () { window.dataLayer.push(arguments); };
+      window.gtag("consent", "default", { analytics_storage: "denied" });
+    </script>
+
     <!-- Google Tag Manager -->
     <script>
       (function (w, d, s, l, i) {

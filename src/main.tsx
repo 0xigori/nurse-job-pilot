@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom"
 import "./index.css"
 import App from "./App"
 import { ThemeProvider } from "@/components/theme-provider"
+import { ConsentProvider } from "@/components/consent-provider"
 import { BlogPage } from "./pages/blog-page"
 import { BlogPostPage } from "./pages/blog-post-page"
 import { NotFoundPage } from "./pages/not-found-page"
@@ -30,18 +31,20 @@ function GtmPageView() {
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <ThemeProvider>
-      <BrowserRouter>
-        <ScrollToTop />
-        <GtmPageView />
-        <Routes>
-          <Route path="/" element={<App />} />
-          <Route path="/blog" element={<BlogPage />} />
-          <Route path="/blog/:slug" element={<BlogPostPage />} />
-          <Route path="/verify-email/:token" element={<VerifyEmailPage />} />
-          <Route path="/reset-password/:token" element={<ResetPasswordPage />} />
-          <Route path="*" element={<NotFoundPage />} />
-        </Routes>
-      </BrowserRouter>
+      <ConsentProvider>
+        <BrowserRouter>
+          <ScrollToTop />
+          <GtmPageView />
+          <Routes>
+            <Route path="/" element={<App />} />
+            <Route path="/blog" element={<BlogPage />} />
+            <Route path="/blog/:slug" element={<BlogPostPage />} />
+            <Route path="/verify-email/:token" element={<VerifyEmailPage />} />
+            <Route path="/reset-password/:token" element={<ResetPasswordPage />} />
+            <Route path="*" element={<NotFoundPage />} />
+          </Routes>
+        </BrowserRouter>
+      </ConsentProvider>
     </ThemeProvider>
   </StrictMode>
 )

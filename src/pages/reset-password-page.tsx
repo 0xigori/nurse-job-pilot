@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom"
 import { Navbar } from "@/components/navbar"
 import { Footer } from "@/components/footer"
 import { useDocumentMeta } from "@/lib/use-document-meta"
+import { getRecaptchaToken } from "@/lib/recaptcha"
 
 type ResetState = "form" | "submitting" | "success" | "error"
 
@@ -26,12 +27,13 @@ export function ResetPasswordPage() {
 
     setState("submitting")
     try {
+      const recaptchaToken = await getRecaptchaToken("reset_password")
       const res = await fetch(
         `${import.meta.env.VITE_API_BASE_URL}/api/v1/auth/reset-password/${token}`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ password }),
+          body: JSON.stringify({ password, recaptchaToken }),
         }
       )
       setState(res.ok ? "success" : "error")
