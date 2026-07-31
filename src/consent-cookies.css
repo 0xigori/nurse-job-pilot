@@ -1,0 +1,22 @@
+#cc-main {
+  /** Match the site's font **/
+  --cc-font-family: "Geist", "system-ui", "sans-serif";
+
+  /** Primary button + toggle use the site's primary brand color **/
+  --cc-btn-primary-bg: var(--primary);
+  --cc-btn-primary-border-color: var(--primary);
+  --cc-btn-primary-color: var(--primary-foreground);
+  --cc-btn-primary-hover-bg: var(--primary);
+  --cc-btn-primary-hover-border-color: var(--primary);
+  --cc-toggle-on-bg: var(--primary);
+
+  /** Bolder, rounder chrome to match the rest of the site's cards **/
+  --cc-btn-border-radius: 10px;
+  --cc-modal-border-radius: 14px;
+  --cc-modal-box-shadow: 0 20px 40px -12px rgb(0 0 0 / 0.25);
+}
+
+#cc-main .cm__title,
+#cc-main .pm__title {
+  font-weight: 700;
+}
