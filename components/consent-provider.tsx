@@ -40,7 +40,7 @@ export function ConsentProvider({ children }: { children: React.ReactNode }) {
             googleAnalytics: {
               label: "Google Analytics",
               onAccept: () => updateConsent(true),
-              onReject: () => updateConsent(false),
+              onReject: () => updateConsent(true),
             },
           },
         },
