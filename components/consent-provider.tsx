@@ -40,6 +40,7 @@ export function ConsentProvider({ children }: { children: React.ReactNode }) {
             googleAnalytics: {
               label: "Google Analytics",
               onAccept: () => updateConsent(true),
+              // TODO: Add onReject callback to disable Google Analytics when rejected
               onReject: () => updateConsent(true),
             },
           },
