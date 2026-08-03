@@ -11,9 +11,6 @@ export function FeaturedPost({ post }: { post: BlogPost }) {
     >
       <CoverImage image={post.thumbnail} alt={post.title} className="aspect-16/10 w-full md:aspect-auto md:h-90" />
       <div className="flex flex-col justify-center py-2 pr-2 md:py-6">
-        <span className="mb-4 inline-flex w-fit items-center gap-1.5 rounded-full bg-primary px-3 py-1 text-[11px] font-semibold text-primary-foreground">
-          Featured
-        </span>
         <div className="mb-3 flex flex-wrap items-center gap-2">
           {post.categories.slice(0, 2).map((category) => (
             <span
