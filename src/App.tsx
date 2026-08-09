@@ -7,6 +7,7 @@ import { FAQ } from "@/components/faq"
 import { CTA, Footer } from "@/components/footer"
 import { JobSites } from "@/components/job-sites"
 import { useDocumentMeta } from "@/lib/use-document-meta"
+import { Pricing } from "@/components/pricing"
 
 export default function App() {
   useDocumentMeta(
@@ -26,6 +27,7 @@ export default function App() {
         <Problem />
         <HowItWorks />
         <Features />
+        <Pricing />
         <JobSites />
         <FAQ />
         <CTA />
