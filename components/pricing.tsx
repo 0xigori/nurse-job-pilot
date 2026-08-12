@@ -2,45 +2,72 @@ import { useState } from "react"
 
 export function Pricing() {
   const [billing, setBilling] = useState<"weekly" | "monthly">("monthly")
+  const [type, setType] = useState<"recurring" | "single_pay">("recurring")
+
+  const renewalCopy = (plan: "weekly" | "monthly") => {
+    if (type === "single_pay") return "One-time, no auto-renewal."
+    return plan === "weekly" ? "Renews weekly. Cancel any time." : "Renews monthly. Cancel any time."
+  }
 
   const plans = [
     {
+      key: "free",
       name: "Free",
       price: "£0",
       period: "",
-      description: "One complete application to see the difference for yourself.",
+      description: "25 credits every month, no card required.",
       cta: "Get started free",
       ctaStyle: "border",
       highlight: false,
       features: [
-        "1 full CV generation cycle",
+        "25 credits/month",
         "Profile builder (unlimited updates)",
         "Job site navigation",
         "Application tracker",
-        "Includes cover letter & supporting statement",
+        "CV, cover letter & supporting statement generation",
         "No credit card required",
       ],
-      note: "Start with one application, no commitment.",
+      note: "Start free, no commitment.",
     },
     {
-      name: "Pro",
-      price: billing === "weekly" ? "£4.99" : "£14.99",
-      period: billing === "weekly" ? "/ week" : "/ month",
-      description: "Unlimited applications for nurses applying at volume.",
-      cta: "Start Pro",
+      key: "weekly",
+      name: "Weekly",
+      price: "£7.99",
+      period: "/ week",
+      description: "300 credits/week + the standard 25 free credits/month.",
+      cta: "Start Weekly",
       ctaStyle: "primary",
-      highlight: true,
+      highlight: billing === "weekly",
       features: [
-        "Unlimited CV, cover letter & supporting statement generation",
+        "300 credits/week + 25 free credits/month",
         "AI-driven form autofill on all supported sites",
         "Contextual job chat per listing",
         "Application tracking with status history",
         "Document re-generation on demand",
         "Profile stored & synced across devices",
-        "Priority generation: under 60 seconds",
         "PDF and .docx download",
       ],
-      note: billing === "monthly" ? "Save vs. weekly. Cancel any time." : "Flexible: pause or cancel any time.",
+      note: renewalCopy("weekly"),
+    },
+    {
+      key: "monthly",
+      name: "Monthly",
+      price: "£20",
+      period: "/ month",
+      description: "1,025 credits/month (1,000 plan + 25 free).",
+      cta: "Start Monthly",
+      ctaStyle: "primary",
+      highlight: billing === "monthly",
+      features: [
+        "1,025 credits/month (1,000 + 25 free)",
+        "AI-driven form autofill on all supported sites",
+        "Contextual job chat per listing",
+        "Application tracking with status history",
+        "Document re-generation on demand",
+        "Profile stored & synced across devices",
+        "PDF and .docx download",
+      ],
+      note: renewalCopy("monthly"),
     },
   ]
 
@@ -51,10 +78,10 @@ export function Pricing() {
         <div className="text-center max-w-2xl mx-auto mb-12">
           <p className="text-xs font-semibold uppercase tracking-widest text-accent mb-4">Pricing</p>
           <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-foreground text-balance mb-4 leading-[1.2]">
-            Start free. Upgrade when you need more.
+            Start free. Top up credits when you need more.
           </h2>
           <p className="text-base text-muted-foreground leading-relaxed">
-            One free application to experience the full workflow. Subscribe for unlimited applications, cancel any time.
+            25 free credits every month to try the full workflow. Buy weekly or monthly credit bundles any time.
           </p>
         </div>
 
@@ -90,10 +117,10 @@ export function Pricing() {
         </div>
 
         {/* Pricing cards */}
-        <div className="grid md:grid-cols-2 gap-4 max-w-3xl mx-auto">
+        <div className="grid md:grid-cols-3 gap-4 max-w-5xl mx-auto">
           {plans.map((plan) => (
             <div
-              key={plan.name}
+              key={plan.key}
               className={`relative rounded-[10px] p-8 flex flex-col gap-6 ${
                 plan.highlight
                   ? "bg-primary text-primary-foreground border-2 border-primary shadow-xl"
@@ -123,6 +150,29 @@ export function Pricing() {
                   {plan.description}
                 </p>
               </div>
+
+              {plan.highlight && (
+                <div className="flex items-center gap-1 bg-primary-foreground/10 rounded-[6px] p-1 w-fit">
+                  <button
+                    type="button"
+                    onClick={() => setType("recurring")}
+                    className={`px-3 py-1 text-xs font-medium rounded-[4px] transition-all ${
+                      type === "recurring" ? "bg-primary-foreground/20" : "opacity-70 hover:opacity-100"
+                    }`}
+                  >
+                    Recurring
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setType("single_pay")}
+                    className={`px-3 py-1 text-xs font-medium rounded-[4px] transition-all ${
+                      type === "single_pay" ? "bg-primary-foreground/20" : "opacity-70 hover:opacity-100"
+                    }`}
+                  >
+                    One-time
+                  </button>
+                </div>
+              )}
 
               <a
                 href="#"
@@ -174,7 +224,7 @@ export function Pricing() {
         {/* Value call-out */}
         <div className="mt-10 text-center">
           <p className="text-sm text-muted-foreground">
-            A single NHS interview callback is worth more than the cost of a month&apos;s subscription.
+            A single NHS interview callback is worth more than the cost of a month&apos;s credits.
           </p>
         </div>
       </div>

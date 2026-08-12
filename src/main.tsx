@@ -14,6 +14,8 @@ import { PrivacyPolicyPage } from "./pages/privacy-policy-page"
 import { TermsOfServicePage } from "./pages/terms-of-service-page"
 import { CookiePolicyPage } from "./pages/cookie-policy-page"
 import { UkGdprPage } from "./pages/uk-gdpr-page"
+import { SubscriptionSuccessPage } from "./pages/subscription-success-page"
+import { SubscriptionCancelPage } from "./pages/subscription-cancel-page"
 import { pushPageView } from "@/lib/analytics"
 
 function ScrollToTop() {
@@ -49,6 +51,8 @@ createRoot(document.getElementById("root")!).render(
             <Route path="/terms-of-service" element={<TermsOfServicePage />} />
             <Route path="/cookie-policy" element={<CookiePolicyPage />} />
             <Route path="/uk-gdpr" element={<UkGdprPage />} />
+            <Route path="/subscription-success" element={<SubscriptionSuccessPage />} />
+            <Route path="/subscription-cancel" element={<SubscriptionCancelPage />} />
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </BrowserRouter>
