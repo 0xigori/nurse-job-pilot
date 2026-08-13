@@ -34,9 +34,9 @@ export function Pricing() {
       name: "Weekly",
       price: "£7.99",
       period: "/ week",
-      description: "300 credits/week + the standard 25 free credits/month.",
+      description: "300 credits/week.",
       cta: "Start Weekly",
-      ctaStyle: "primary",
+      ctaStyle: "border",
       highlight: billing === "weekly",
       features: [
         "300 credits/week + 25 free credits/month",
@@ -54,7 +54,7 @@ export function Pricing() {
       name: "Monthly",
       price: "£20",
       period: "/ month",
-      description: "1,025 credits/month (1,000 plan + 25 free).",
+      description: "1,025 credits/month.",
       cta: "Start Monthly",
       ctaStyle: "primary",
       highlight: billing === "monthly",
@@ -65,6 +65,7 @@ export function Pricing() {
         "Application tracking with status history",
         "Document re-generation on demand",
         "Profile stored & synced across devices",
+        "Free 20 daily credit after 1,000 credits used",
         "PDF and .docx download",
       ],
       note: renewalCopy("monthly"),
@@ -85,43 +86,12 @@ export function Pricing() {
           </p>
         </div>
 
-        {/* Billing toggle */}
-        <div className="flex items-center justify-center mb-10">
-          <div className="flex items-center bg-muted rounded-[6px] p-1 gap-1">
-            <button
-              type="button"
-              onClick={() => setBilling("weekly")}
-              className={`px-4 py-2 text-sm font-medium rounded-[4px] transition-all ${
-                billing === "weekly"
-                  ? "bg-card text-foreground shadow-sm border border-border"
-                  : "text-muted-foreground hover:text-foreground"
-              }`}
-            >
-              Weekly
-            </button>
-            <button
-              type="button"
-              onClick={() => setBilling("monthly")}
-              className={`px-4 py-2 text-sm font-medium rounded-[4px] transition-all flex items-center gap-2 ${
-                billing === "monthly"
-                  ? "bg-card text-foreground shadow-sm border border-border"
-                  : "text-muted-foreground hover:text-foreground"
-              }`}
-            >
-              Monthly
-              <span className="text-[10px] font-semibold text-accent bg-teal-subtle border border-accent/20 px-1.5 py-0.5 rounded-full">
-                Best value
-              </span>
-            </button>
-          </div>
-        </div>
-
         {/* Pricing cards */}
         <div className="grid md:grid-cols-3 gap-4 max-w-5xl mx-auto">
           {plans.map((plan) => (
             <div
               key={plan.key}
-              className={`relative rounded-[10px] p-8 flex flex-col gap-6 ${
+              className={`relative rounded-lg p-8 flex flex-col gap-6 ${
                 plan.highlight
                   ? "bg-primary text-primary-foreground border-2 border-primary shadow-xl"
                   : "bg-card border border-border"
@@ -151,32 +121,9 @@ export function Pricing() {
                 </p>
               </div>
 
-              {plan.highlight && (
-                <div className="flex items-center gap-1 bg-primary-foreground/10 rounded-[6px] p-1 w-fit">
-                  <button
-                    type="button"
-                    onClick={() => setType("recurring")}
-                    className={`px-3 py-1 text-xs font-medium rounded-[4px] transition-all ${
-                      type === "recurring" ? "bg-primary-foreground/20" : "opacity-70 hover:opacity-100"
-                    }`}
-                  >
-                    Recurring
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => setType("single_pay")}
-                    className={`px-3 py-1 text-xs font-medium rounded-[4px] transition-all ${
-                      type === "single_pay" ? "bg-primary-foreground/20" : "opacity-70 hover:opacity-100"
-                    }`}
-                  >
-                    One-time
-                  </button>
-                </div>
-              )}
-
               <a
                 href="#"
-                className={`flex items-center justify-center gap-2 px-6 py-2.5 text-sm font-semibold rounded-[6px] transition-colors ${
+                className={`flex items-center justify-center gap-2 px-6 py-2.5 text-sm font-semibold rounded-md transition-colors ${
                   plan.ctaStyle === "primary"
                     ? "text-primary-foreground border-2 border-primary-foreground/30 hover:border-primary-foreground/60"
                     : "bg-primary text-primary-foreground hover:bg-primary/90"
@@ -192,7 +139,7 @@ export function Pricing() {
                 {plan.features.map((feature) => (
                   <li key={feature} className="flex items-start gap-2.5">
                     <svg
-                      className={`w-4 h-4 flex-shrink-0 mt-0.5 ${plan.highlight ? "text-primary-foreground/70" : "text-accent"}`}
+                      className={`w-4 h-4 shrink-0 mt-0.5 ${plan.highlight ? "text-primary-foreground/70" : "text-accent"}`}
                       viewBox="0 0 16 16"
                       fill="none"
                       aria-hidden="true"
